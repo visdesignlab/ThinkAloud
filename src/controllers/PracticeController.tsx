@@ -1,13 +1,16 @@
 import { useForm } from "@mantine/form";
-import { lazy, Suspense, useEffect, useMemo } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 import { Group } from "@mantine/core";
 import { Text } from "@mantine/core";
+import { Button } from "@mantine/core";
 import { useParams } from "react-router-dom";
 import { NextButton } from "../components/NextButton";
 import { PracticeComponent } from "../parser/types";
 import { useCurrentStep } from "../routes";
+import { useNavigate } from "react-router-dom";
+
 import {
   saveTrialAnswer,
   useAppDispatch,
@@ -51,7 +54,7 @@ export function useNextTrialId(currentTrial: string | null) {
 
 // current active stimuli presented to the user
 
-export default function TrainingController() {
+export default function PracticeController() {
   const dispatch = useAppDispatch();
   const currentStep = useCurrentStep();
   const nextStep = useNextStep();
@@ -59,6 +62,9 @@ export default function TrainingController() {
   const config = useTrialsConfig();
   const nextTrailId = useNextTrialId(trialId);
   const trialStatus = useTrialStatus(trialId);
+  const [disableNext, setDisableNext] = useState(true);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const navigate = useNavigate();
 
   const trialProvenance = createTrialProvenance();
 
@@ -82,6 +88,15 @@ export default function TrainingController() {
     validateInputOnChange: ["input"],
   });
 
+  const handleResponseCheck = () => {
+    if (answerField.getTransformedValues().answer === stimulus.stimulus.correctAnswer) 
+      setCorrectAnswers(correctAnswers + 1);
+
+    setDisableNext(false)
+
+    if ((nextTrailId === null) && (correctAnswers < config?.minCorrect)) {}
+  }
+  
   useEffect(() => {
     answerField.setFieldValue("input", trialStatus.answer || "");
   }, [trialStatus.answer]);
@@ -91,7 +106,6 @@ export default function TrainingController() {
   const stimulus = config.trials[trialId];
   const componentPath = stimulus.stimulus.path;
   const response = config.response;
-
   const StimulusComponent = useMemo(() => {
     if (!componentPath || componentPath.length === 0) return null;
 
@@ -108,6 +122,7 @@ export default function TrainingController() {
           <Suspense fallback={<div>Loading...</div>}>
             <StimulusComponent parameters={stimulus.stimulus.parameters} />
             <ResponseSwitcher status={trialStatus} response={response} />
+            {!disableNext && (<Text>The correct answer is: {stimulus.stimulus.correctAnswer}</Text>)}
             {/* <TextInput
             //disabled={trialStatus.complete}
             //{...answerField.getInputProps("input")}
@@ -122,6 +137,7 @@ export default function TrainingController() {
       
 
       <Group position="right" spacing="xs" mt="xl">
+      <Button onClick={handleResponseCheck} disabled={!disableNext}>Check Answer</Button>
         {nextTrailId ? (
           <NextButton
             // disabled={
@@ -129,28 +145,31 @@ export default function TrainingController() {
             //   (answerField.values.input.length === 0 ||
             //     !answerField.isValid("input"))
             // }
+            disabled={disableNext}
             to={`/${currentStep}/${nextTrailId}`}
             process={() => {
               if (trialStatus.complete) {
                 answerField.setFieldValue("input", "");
               }
 
-              const answer = answerField.getTransformedValues().answer;
+            const answer = answerField.getTransformedValues().answer;  
 
-              dispatch(
+            /*dispatch(
                 saveTrialAnswer({
                   trialName: currentStep,
                   trialId,
                   answer: answer.toString(),
                 })
-              );
+              );*/
 
+              setDisableNext(true)
               answerField.setFieldValue("input", "");
             }}
           />
         ) : (
           <NextButton
-            to={`/${nextStep}`}
+            to={`/${nextStep}`} 
+            disabled={disableNext}
             process={() => {
               // complete trials
             }}

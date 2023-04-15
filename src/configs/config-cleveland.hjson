@@ -28,7 +28,7 @@
             type: "training"
         },
         practice1: {
-             type: "practice",
+            type: "practice",
             order: ["bubbleChart", "pieChart", "stackedBarChart"],
             response:{
                 id: "training-response"
@@ -77,8 +77,8 @@
                                 { name: "E", value: "60" },
                             ],
                             selectedIndices: [1, 4],
-                            correctAnswer: 20
-                        }
+                        },
+                        correctAnswer: 40
                     },
                 },
                 pieChart: {
@@ -97,12 +97,14 @@
                                 { name: "D", value: "40" },
                                 { name: "E", value: "60" },
                             ],
-                            selectedIndices: [1, 4],
-                            correctAnswer: 20
-                        }
+                            selectedIndices: [1, 4],                            
+                        },
+                        correctAnswer: 30
                     },
                 },
             },
+            //Set min number of correct responses
+            minCorrect: 3
         },
         attention1: {
             type: "attention-test"

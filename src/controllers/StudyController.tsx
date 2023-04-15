@@ -27,7 +27,7 @@ const elements: Record<StudyComponent["type"], ReactNode> = {
   ),
   training: (
     <>
-      <div>practice component goes here</div>
+      <div>Training component goes here</div>
       <NextButton />
       <Status />
     </>

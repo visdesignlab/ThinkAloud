@@ -23,9 +23,40 @@
         training1: {
             type: "training"
         },
-        practice1: {
+        practice1: {            
             type: "practice",
-            max-failures: 5,
+            #Stimuli order
+            order: ["bubbleChart"],
+            #Practice Stimuli Response Field
+            response:{
+                id: "training-response"
+                type: "numeric",
+                prompt: "Your answer!!",
+                desc: "Enter your answer here, range from 0 - 100",
+                options:[],
+                required: true,
+            },
+            trials: {
+                bubbleChart: {
+                    description: "Bubble Chart",
+                    //Instruction given to participant
+                    instruction: "Two values are marked with dots. \n\n **Question:** What percentage do you believe the smaller value represents relative to the larger value?",
+                    stimulus: {
+                        // Allowable types: image, javascript, website, react-component 
+                        type: "react-component",
+                        // can be a URL or a local path
+                        path: "",
+                        //Stimuli parameters
+                        parameters: {},
+                        //Correct answer 
+                        correctAnswer: 20
+                        //Set Max Trials
+                    },
+                },
+    
+            },
+            //Set min numeber of correct responses
+            minCorrect: 3
         },
         attention1: {
             type: "attention-test"

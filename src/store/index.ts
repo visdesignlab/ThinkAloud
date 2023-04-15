@@ -52,7 +52,7 @@ const studySlice = createTrrackableSlice({
         };
       });
       state.steps = steps;
-
+    
       // Create answers record for trail type steps
       const trialSteps = payload.sequence.filter(
         (step) => payload.components[step].type === "trials"

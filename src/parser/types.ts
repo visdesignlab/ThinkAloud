@@ -38,6 +38,7 @@ interface TrainingComponent extends StudyComponent {
 export interface PracticeComponent extends StudyComponent {
   response: Response;
   order: string[];
+  minCorrect: number;
   trials: { [key: string]: Trial };
 }
 
@@ -63,6 +64,7 @@ interface Stimulus {
   type: "react-component" | "image" | "javascript" | "website";
   path?: string;
   parameters?: { [key: string]: any };
+  correctAnswer?: any;
 }
 
 // Add types for stimulus

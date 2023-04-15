@@ -33,7 +33,6 @@ export function createRouter(
     const comp = elements[component?.type || "end"];
 
     if (component?.type === "trials") {
-      console.log("Training")
       const { order } = component as TrialsComponent;
 
       const baseTrailRoute: RouteObject = {
