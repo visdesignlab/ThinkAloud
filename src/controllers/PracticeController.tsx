@@ -12,7 +12,7 @@ import { useCurrentStep } from "../routes";
 import { useNavigate } from "react-router-dom";
 
 import {
-  saveTrialAnswer,
+  savePracticeAnswer,
   useAppDispatch,
   useAppSelector,
   useNextStep,
@@ -94,7 +94,7 @@ export default function PracticeController() {
 
     setDisableNext(false)
 
-    if ((nextTrailId === null) && (correctAnswers < config?.minCorrect)) {}
+    //if ((nextTrailId === null) && (correctAnswers < config?.minCorrect)) {}
   }
   
   useEffect(() => {
@@ -154,13 +154,13 @@ export default function PracticeController() {
 
             const answer = answerField.getTransformedValues().answer;  
 
-            /*dispatch(
-                saveTrialAnswer({
+            dispatch(
+                savePracticeAnswer({
                   trialName: currentStep,
                   trialId,
                   answer: answer.toString(),
                 })
-              );*/
+              );
 
               setDisableNext(true)
               answerField.setFieldValue("input", "");

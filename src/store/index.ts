@@ -89,10 +89,25 @@ const studySlice = createTrrackableSlice({
         answer: payload.answer,
       };
     },
+    savePracticeAnswer(
+      state,
+      {
+        payload,
+      }: PayloadAction<{
+        trialName: string;
+        trialId: string;
+        answer: string;
+      }>
+    ) {
+      state.practices[payload.trialName][payload.trialId] = {
+        complete: true,
+        answer: payload.answer,
+      };
+    },
   },
 });
 
-export const { saveConfig, completeStep, saveTrialAnswer } = studySlice.actions;
+export const { saveConfig, completeStep, saveTrialAnswer, savePracticeAnswer } = studySlice.actions;
 
 export const { store, trrack, trrackStore } = configureTrrackableStore({
   reducer: {
