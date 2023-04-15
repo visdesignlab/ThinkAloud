@@ -11,6 +11,7 @@ import { StudyComponent } from "../parser/types";
 import { createRouter } from "../routes";
 import { saveConfig, type RootState } from "../store/";
 import TrialController from "./TrialController";
+import TrainingController from "./TrainingController";
 
 async function fetchStudyConfig(configLocation: string) {
   const config = await (await fetch(configLocation)).text();
@@ -24,13 +25,7 @@ const elements: Record<StudyComponent["type"], ReactNode> = {
       <Status />
     </>
   ),
-  training: (
-    <>
-      <div>training component goes here</div>
-      <NextButton />
-      <Status />
-    </>
-  ),
+  training: <TrainingController />,
   practice: (
     <>
       <div>practice component goes here</div>

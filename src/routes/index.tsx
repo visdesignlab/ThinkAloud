@@ -8,7 +8,8 @@ import {
   useLocation,
 } from "react-router-dom";
 import TrialController from "../controllers/TrialController";
-import { StudyComponent, StudyConfig, TrialsComponent } from "../parser/types";
+import TrainingController from "../controllers/TrainingController";
+import { StudyComponent, StudyConfig, TrialsComponent, TrainingComponent } from "../parser/types";
 
 export function createRouter(
   config: StudyConfig | null,
@@ -46,6 +47,21 @@ export function createRouter(
 
       routes.push(baseTrailRoute);
       routes.push(trialRoute);
+    } else if (component?.type === "training"){
+        const { order } = component as TrainingComponent;
+
+        const baseTrailRoute: RouteObject = {
+          path: step,
+          element: <Navigate to={`/${step}/${order[0]}`} replace />,
+        };
+
+        const trialRoute: RouteObject = {
+          path: `${step}/:trialId`,
+          element: <TrainingController />,
+        };
+
+        routes.push(baseTrailRoute);
+        routes.push(trialRoute);
     } else {
       const route: RouteObject = {
         path: step,

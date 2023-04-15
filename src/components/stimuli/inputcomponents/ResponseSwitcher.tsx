@@ -12,7 +12,7 @@ type Props = {
 
 export default function ResponseSwitcher({ response }: Props) {
   const { type, desc, prompt, options, required } = response;
-
+  console.log(response, "responseswitcher")
   if (!type) return null;
 
   return (

@@ -21,7 +21,81 @@
             signatureRequired: true
         },
         training1: {
-            type: "training"
+            type: "trials",
+            order: ["bubbleChart", "pieChart", "stackedBarChart"],
+            response:{
+                id: "training-response"
+                type: "numeric",
+                prompt: "Your answer!!",
+                desc: "Enter your answer here, range from 0 - 100",
+                options:[],
+                required: true,
+            },
+            trials: {
+                bubbleChart: {
+                    description: "A chart with correct answer of 0.66",
+                    instruction: "Two values are marked with dots. \n\n **Question:** What percentage do you believe the smaller value represents relative to the larger value?",
+                    stimulus: {
+                        // Allowable types: image, javascript, website, react-component 
+                        type: "react-component",
+                        // can be a URL or a local path
+                        path: "./stimuli/BubbleChart.tsx",
+                        parameters: {
+                            data: [
+                                { name: "A", value: "30" },
+                                { name: "B", value: "40" },
+                                { name: "C", value: "50" },
+                                { name: "D", value: "40" },
+                                { name: "E", value: "60" },
+                            ],
+                            selectedIndices: [1, 4],
+                        },
+                        correctAnswer: 20
+                    },
+                },
+                stackedBarChart: {
+                    description: "A chart with correct answer of 0.66",
+                    instruction: "Two values are marked with dots. \n\n **Question:** What percentage do you believe the smaller value represents relative to the larger value?",
+                    stimulus: {
+                        // Allowable types: image, javascript, website, react-component 
+                        type: "react-component",
+                        // can be a URL or a local path
+                        path: "./stimuli/StackedBarChart.tsx",
+                        parameters: {
+                            data: [
+                                { name: "A", value: "30" },
+                                { name: "B", value: "40" },
+                                { name: "C", value: "50" },
+                                { name: "D", value: "40" },
+                                { name: "E", value: "60" },
+                            ],
+                            selectedIndices: [1, 4],
+                            correctAnswer: 20
+                        }
+                    },
+                },
+                pieChart: {
+                    description: "Pie chart",
+                    instruction: "Two values are marked with dots. \n\n **Question:** What percentage do you believe the smaller value represents relative to the larger value?",
+                    stimulus: {
+                        // Allowable types: image, javascript, website, react-component 
+                        type: "react-component",
+                        // can be a URL or a local path
+                        path: "./stimuli/PieChart.tsx",
+                        parameters: {
+                            data: [
+                                { name: "A", value: "30" },
+                                { name: "B", value: "40" },
+                                { name: "C", value: "50" },
+                                { name: "D", value: "40" },
+                                { name: "E", value: "60" },
+                            ],
+                            selectedIndices: [1, 4],
+                            correctAnswer: 20
+                        }
+                    },
+                },
+            },
         },
         practice1: {
             type: "practice",

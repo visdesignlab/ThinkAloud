@@ -27,8 +27,10 @@ export interface ConsentComponent extends StudyComponent {
   signatureRequired: boolean;
 }
 
-interface TrainingComponent extends StudyComponent {
-  // TODO
+export interface TrainingComponent extends StudyComponent {
+    response: Response;
+    order: string[];
+    trials: { [key: string]: Trial };
 }
 
 interface PracticeComponent extends StudyComponent {
