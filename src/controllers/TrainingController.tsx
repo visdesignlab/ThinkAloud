@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 
 import { Group } from "@mantine/core";
-import { TextInput } from "@mantine/core";
+import { Text } from "@mantine/core";
 import { useParams } from "react-router-dom";
 import { NextButton } from "../components/NextButton";
 import { TrainingComponent } from "../parser/types";
@@ -109,6 +109,7 @@ export default function TrainingController() {
           <Suspense fallback={<div>Loading...</div>}>
             <StimulusComponent parameters={stimulus.stimulus.parameters} />
             <ResponseSwitcher status={trialStatus} response={response} />
+            <Text>Heloo</Text>
             {/* <TextInput
             //disabled={trialStatus.complete}
             //{...answerField.getInputProps("input")}
@@ -120,6 +121,7 @@ export default function TrainingController() {
           </Suspense>
         )}
       </TrialProvenanceContext.Provider>
+      
 
       <Group position="right" spacing="xs" mt="xl">
         {nextTrailId ? (
