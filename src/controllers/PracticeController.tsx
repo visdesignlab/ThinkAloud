@@ -6,7 +6,7 @@ import { Group } from "@mantine/core";
 import { Text } from "@mantine/core";
 import { useParams } from "react-router-dom";
 import { NextButton } from "../components/NextButton";
-import { TrainingComponent } from "../parser/types";
+import { PracticeComponent } from "../parser/types";
 import { useCurrentStep } from "../routes";
 import {
   saveTrialAnswer,
@@ -29,9 +29,9 @@ export function useTrialsConfig() {
     const { config } = state.study;
     const component = currentStep ? config?.components[currentStep] : null;
 
-    if (!config || !currentStep || component?.type !== "training") return null;
+    if (!config || !currentStep || component?.type !== "practice") return null;
 
-    return config.components[currentStep] as TrainingComponent;
+    return config.components[currentStep] as PracticeComponent;
   });
 }
 
@@ -100,7 +100,6 @@ export default function TrainingController() {
     );
   }, [componentPath]);
 
-  console.log(response);
   return (
     <div key={trialId}>
       <ReactMarkdown>{stimulus.instruction}</ReactMarkdown>
@@ -109,7 +108,6 @@ export default function TrainingController() {
           <Suspense fallback={<div>Loading...</div>}>
             <StimulusComponent parameters={stimulus.stimulus.parameters} />
             <ResponseSwitcher status={trialStatus} response={response} />
-            <Text>Heloo</Text>
             {/* <TextInput
             //disabled={trialStatus.complete}
             //{...answerField.getInputProps("input")}

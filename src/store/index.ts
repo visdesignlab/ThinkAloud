@@ -111,7 +111,7 @@ export function useTrialStatus(trialId: string | null): TrialResult {
   const currentStep = useCurrentStep();
   const { config, trials } = useAppSelector((state) => state.study);
 
-  if (!trialId || !config || config.components[currentStep].type !== "trials")
+  if (!trialId || !config || config.components[currentStep].type !== "trials" || config.components[currentStep].type !== "practice")
     throw new Error("Not called from a trial route");
 
   const status: TrialResult | null = trials[currentStep][trialId];

@@ -25,7 +25,10 @@
             signatureRequired: true
         },
         training1: {
-            type: "trials",
+            type: "training"
+        },
+        practice1: {
+             type: "practice",
             order: ["bubbleChart", "pieChart", "stackedBarChart"],
             response:{
                 id: "training-response"
@@ -100,10 +103,6 @@
                     },
                 },
             },
-        },
-        practice1: {
-            type: "practice",
-            max-failures: 5,
         },
         attention1: {
             type: "attention-test"

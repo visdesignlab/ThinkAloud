@@ -31,14 +31,14 @@ export interface ConsentComponent extends StudyComponent {
   signatureRequired: boolean;
 }
 
-export interface TrainingComponent extends StudyComponent {
-    response: Response;
-    order: string[];
-    trials: { [key: string]: Trial };
+interface TrainingComponent extends StudyComponent {
+  // TODO
 }
 
-interface PracticeComponent extends StudyComponent {
-  // TODO
+export interface PracticeComponent extends StudyComponent {
+  response: Response;
+  order: string[];
+  trials: { [key: string]: Trial };
 }
 
 interface AttentionComponent extends StudyComponent {
