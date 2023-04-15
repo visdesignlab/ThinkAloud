@@ -21,6 +21,7 @@ interface State {
   consent?: {signature: unknown; timestamp: number},
   steps: Record<string, Step>;
   trials: Record<string, TrialRecord>;
+  practices: Record<string, TrialRecord>;
 }
 
 const initialState: State = {
@@ -28,6 +29,7 @@ const initialState: State = {
   consent: undefined,
   steps: {},
   trials: {},
+  practices: {},
 };
 
 const studySlice = createTrrackableSlice({
@@ -57,6 +59,13 @@ const studySlice = createTrrackableSlice({
       );
       trialSteps.forEach((trialName) => {
         state.trials[trialName] = {};
+      });
+
+      const practiceSteps = payload.sequence.filter(
+        (step) => payload.components[step].type === "practice"
+      );
+      practiceSteps.forEach((practiceStep) => {
+        state.practices[practiceStep] = {};
       });
     },
     completeStep(state, step) {
@@ -109,12 +118,23 @@ export function useNextStep() {
 
 export function useTrialStatus(trialId: string | null): TrialResult {
   const currentStep = useCurrentStep();
-  const { config, trials } = useAppSelector((state) => state.study);
+  const { config, trials, practices  } = useAppSelector((state) => state.study);
 
-  if (!trialId || !config || config.components[currentStep].type !== "trials" || config.components[currentStep].type !== "practice")
+  if (!trialId || !config || (config.components[currentStep].type !== "trials" && config.components[currentStep].type !== "practice"))
     throw new Error("Not called from a trial route");
 
-  const status: TrialResult | null = trials[currentStep][trialId];
+  let status: TrialResult | null = null
+
+  switch (config.components[currentStep].type) {
+    case "trials": 
+      status = trials[currentStep][trialId]
+      break
+    case "practice":
+      status = practices[currentStep][trialId]
+      break
+    default:
+      break
+  }
 
   return (
     status || {
