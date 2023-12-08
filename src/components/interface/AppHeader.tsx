@@ -3,7 +3,7 @@ import {
   Button,
   Flex,
   Grid,
-  Header,
+  AppShell,
   Image,
   Menu,
   Progress,
@@ -59,7 +59,7 @@ export default function AppHeader() {
   }
 
   return (
-    <Header height="70" p="md">
+    <AppShell.Header height="70" p="md">
       <Grid mt={-7} align="center">
         <Grid.Col span={4}>
           <Flex align="center">
@@ -133,6 +133,6 @@ export default function AppHeader() {
           </Flex>
         </Grid.Col>
       </Grid>
-    </Header>
+    </AppShell.Header>
   );
 }

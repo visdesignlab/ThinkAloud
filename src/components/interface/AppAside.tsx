@@ -1,6 +1,6 @@
 import {
   ActionIcon,
-  Aside,
+  AppShell,
   Flex,
   Paper,
   ScrollArea,
@@ -33,17 +33,17 @@ export default function AppAside() {
   }));
 
   return showAdmin ? (
-    <Aside p="0" width={{ base: 300 }} style={{ zIndex: 0 }}>
+    <AppShell.Aside p="0" width={{ base: 300 }} style={{ zIndex: 0 }}>
       <ScrollArea p="0">
-        <Aside.Section grow component={ScrollArea} px="xs" my="lg">
+        <AppShell.Section grow component={ScrollArea} px="xs" my="lg">
           <StepsPanel order={studyConfig.sequence} />
-        </Aside.Section>
+        </AppShell.Section>
 
-        <Aside.Section grow component={ScrollArea} px="xs" my="lg">
+        <AppShell.Section grow component={ScrollArea} px="xs" my="lg">
           {currentStep === 'end' && <DownloadPanel studyConfig={studyConfig} />}
-        </Aside.Section>
+        </AppShell.Section>
 
-        <Aside.Section grow component={ScrollArea} px="xs" my="lg">
+        <AppShell.Section grow component={ScrollArea} px="xs" my="lg">
           {tasks.map((task, index) => (
             <React.Fragment key={`admin_${task.id}`}>
               <Paper radius={0} p={0} withBorder>
@@ -89,8 +89,8 @@ export default function AppAside() {
               <Space h="md" />
             </React.Fragment>
           ))}
-        </Aside.Section>
+        </AppShell.Section>
       </ScrollArea>
-    </Aside>
+    </AppShell.Aside>
   ) : null;
 }

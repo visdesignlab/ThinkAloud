@@ -62,7 +62,7 @@ export function YAxisBar({
           >
             <foreignObject width={labelSpacing} height={20}>
               <Group style={{ width: '100%', height: '100%' }} position="right">
-                <Text sx={{ textOverflow: 'ellipsis', overflow: 'hidden' }} size={10}>
+                <Text style={{ textOverflow: 'ellipsis', overflow: 'hidden' }} size={10}>
                   {value}
                 </Text>
               </Group>

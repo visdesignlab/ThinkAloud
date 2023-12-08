@@ -7,13 +7,12 @@ import HelpModal from './interface/HelpModal';
 
 export function StepRenderer() {
   return (
-    <AppShell
-      navbar={<AppNavBar />}
-      aside={<AppAside />}
-      header={<AppHeader />}
-    >
+    <AppShell navbar={{ width: 300, collapsed: { desktop: false, mobile: false }, breakpoint: 0}}>
       <HelpModal />
-      <Outlet />
+      <AppHeader />
+      <AppNavBar />
+      <AppShell.Main><Outlet /></AppShell.Main>
+      <AppAside />
     </AppShell>
   );
 }

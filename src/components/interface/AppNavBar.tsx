@@ -1,4 +1,4 @@
-import { Navbar, Text } from '@mantine/core';
+import { AppShell, Text } from '@mantine/core';
 import ReactMarkdownWrapper from '../ReactMarkdownWrapper';
 import { useStudyConfig } from '../../store/hooks/useStudyConfig';
 import { useStoredAnswer } from '../../store/hooks/useStoredAnswer';
@@ -34,9 +34,9 @@ export default function AppNavBar() {
     currentConfig?.instructionLocation === undefined;
 
   return trialHasSideBar && currentConfig ? (
-    <Navbar bg="gray.1" display="block" width={{ base: 300 }} style={{ zIndex: 0, overflowY: 'scroll' }}>
+    <AppShell.Navbar bg="gray.1" display="block" width={{ base: 300 }} style={{ zIndex: 0, overflowY: 'scroll' }}>
       {instructionInSideBar && instruction !== '' && (
-        <Navbar.Section
+        <AppShell.Section
           bg="gray.3"
           p="xl"
         >
@@ -46,11 +46,11 @@ export default function AppNavBar() {
             </Text>
             <ReactMarkdownWrapper text={instruction} />
           </Text>
-        </Navbar.Section>
+        </AppShell.Section>
       )}
 
       {trialHasSideBarResponses && (
-        <Navbar.Section p="xl">
+        <AppShell.Section p="xl">
           {
             <ResponseBlock
               key={`${currentStep}-sidebar-response-block`}
@@ -59,9 +59,9 @@ export default function AppNavBar() {
               location="sidebar"
             />
           }
-        </Navbar.Section>
+        </AppShell.Section>
       )}
-    </Navbar>
+    </AppShell.Navbar>
   ) : (
     <ResponseBlock
       key={`${currentStep}-sidebar-response-block`}

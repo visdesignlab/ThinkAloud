@@ -4,6 +4,8 @@ import ConfigSwitcher from './ConfigSwitcher';
 import { Shell } from './Shell';
 import { parseGlobalConfig, parseStudyConfig } from '../parser/parser';
 import { GlobalConfig, Nullable, StudyConfig } from '../parser/types';
+import { MantineProvider, createTheme } from '@mantine/core';
+import '@mantine/core/styles.css';
 
 export const PREFIX = import.meta.env.PROD
   ? import.meta.env.VITE_BASE_PATH
@@ -53,24 +55,30 @@ export function GlobalConfigParser() {
       setGlobalConfig(gc);
     });
   }, [globalConfig]);
+  
+  const theme = createTheme({
+    /** Your theme override here */
+  });
 
   return globalConfig ? (
-    <BrowserRouter basename={PREFIX}>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <ConfigSwitcher
-              globalConfig={globalConfig}
-              studyConfigs={studyConfigs}
-            />
-          }
-        />
-        <Route
-          path="/:studyId/*"
-          element={<Shell globalConfig={globalConfig} />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <MantineProvider theme={theme}>
+      <BrowserRouter basename={PREFIX}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ConfigSwitcher
+                globalConfig={globalConfig}
+                studyConfigs={studyConfigs}
+              />
+            }
+          />
+          <Route
+            path="/:studyId/*"
+            element={<Shell globalConfig={globalConfig} />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </MantineProvider>
   ) : null;
 }
