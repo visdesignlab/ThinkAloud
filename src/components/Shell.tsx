@@ -28,6 +28,7 @@ import { generateSequenceArray } from '../utils/handleRandomSequences';
 import { Box, Center, Loader } from '@mantine/core';
 
 async function fetchStudyConfig(configLocation: string, configKey: string) {
+  console.log(PREFIX,'prefix');
   const config = await (await fetch(`${PREFIX}${configLocation}`)).text();
   return parseStudyConfig(config, configKey);
 }
@@ -42,6 +43,7 @@ export function Shell({ globalConfig }: {
   }
   const [activeConfig, setActiveConfig] = useState<Nullable<StudyConfig>>(null);
   useEffect(() => {
+    console.log(studyId,'studyId');
     const configKey = globalConfig.configsList.find(
       (c) => sanitizeStringForUrl(c) === studyId
     );
@@ -84,8 +86,8 @@ export function Shell({ globalConfig }: {
   }, [storageEngine, activeConfig, studyId]);
 
   const routing = useRoutes(routes);
-  
-  return !routing || !store ? 
+
+  return !routing || !store ?
     (<Box style={{height: '100vh'}}>
       <Center style={{height: '100%'}}>
         <Loader style={{height: '100%'}} size={60} />
@@ -105,7 +107,7 @@ export function generateStudiesRoutes(
   sequence: Nullable<string[]>,
 ) {
   const routes: RouteObject[] = [];
- 
+
   if (studyId && config && sequence) {
     const stepRoutes: RouteObject[] = [];
 
