@@ -20,7 +20,6 @@ async function fetchStudyConfig(configLocation: string, configKey: string, dataB
 }
 export function SummaryBlock(props: summaryBlockProps) {
     const { globalConfig, databaseSection,studyId } = props;
-    // const [allData, setAllData] = useState<ParticipantData[]>([]);
     const [loading, setLoading] = useState(false);
     const storageEngine = new FirebaseStorageEngine();
     const configKey = globalConfig.configsList.find(
@@ -37,7 +36,6 @@ export function SummaryBlock(props: summaryBlockProps) {
             const configJSON = globalConfig.configs[configKey];
             const config = await fetchStudyConfig(`${configJSON.path}`, configKey, databaseSection);
             await storageEngine.connect();
-
             await storageEngine.initializeStudyDb(studyId, config);
             const allData = await storageEngine.getAllParticipantsData();
             // setAllData(allData);

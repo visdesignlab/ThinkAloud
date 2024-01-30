@@ -13,7 +13,6 @@ export function Dashboard(props: dashBoardProps) {
     return (
         <>
             <Container fluid>
-                <h1>Dashboard</h1>
                 <Tabs value={activeTab} onTabChange={setActiveTab}>
                     <Tabs.List>
                         <Tabs.Tab value="Prod">Production</Tabs.Tab>
@@ -23,7 +22,6 @@ export function Dashboard(props: dashBoardProps) {
                     <Tabs.Panel value="Prod">
                         <SummaryBlock databaseSection="/" studyId={'html-demo'} globalConfig={globalConfig}/>
                     </Tabs.Panel>
-
                     <Tabs.Panel value="Dev">
                         <SummaryBlock databaseSection="/" studyId={'html-demo'} globalConfig={globalConfig}/>
                     </Tabs.Panel>
