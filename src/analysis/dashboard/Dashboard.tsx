@@ -18,7 +18,6 @@ export function Dashboard(props: dashBoardProps) {
                         <Tabs.Tab value="Prod">Production</Tabs.Tab>
                         <Tabs.Tab value="Dev">Dev</Tabs.Tab>
                     </Tabs.List>
-
                     <Tabs.Panel value="Prod">
                         <SummaryBlock databaseSection="/" studyId={'html-demo'} globalConfig={globalConfig}/>
                     </Tabs.Panel>

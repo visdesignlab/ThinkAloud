@@ -1,4 +1,4 @@
-import { Affix, Badge, Box, Navbar, NavLink, Text } from '@mantine/core';
+import { Box, Navbar, NavLink, Text } from '@mantine/core';
 import { IconZoomQuestion, IconLayoutDashboard, IconChevronRight, IconBrowserPlus } from '@tabler/icons-react';
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
@@ -47,14 +47,7 @@ export default function AppNav() {
                         />
                     </Box>
                 </Navbar.Section>
-                <Navbar.Section p="xl">
-                    <Affix position={{ bottom: 10, left: 10 }}>
-                        <Box w={240}>
-                            <Badge color="green">Connected</Badge> : <Badge color="red">Disconnected</Badge>
-                        </Box>
 
-                    </Affix>
-                </Navbar.Section>
 
         </Navbar>
     );
