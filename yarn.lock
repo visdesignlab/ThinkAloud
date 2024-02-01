@@ -816,6 +816,13 @@
     "@radix-ui/react-scroll-area" "1.0.0"
     react-textarea-autosize "8.3.4"
 
+"@mantine/dates@5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@mantine/dates/-/dates-5.8.0.tgz#26e40055327c3ea281fbb680258b3bdf31f8ceff"
+  integrity sha512-w8pc/cCUXiITBnAi9hy3My8ML9/Y/ANDTHkJpPsiMLMSt+JbC1eqcytXMv3CGGLhWdkwRy5E43J7yv1rAs89fQ==
+  dependencies:
+    "@mantine/utils" "5.8.0"
+
 "@mantine/form@^6.0.7":
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/@mantine/form/-/form-6.0.7.tgz#4ccbaf2ef587d4f27d885d44148f74db7266419a"
@@ -2567,6 +2574,11 @@ d3@^7.8.2:
     d3-timer "3"
     d3-transition "3"
     d3-zoom "3"
+
+dayjs@^1.11.10:
+  version "1.11.10"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
+  integrity sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==
 
 debug@^3.2.7:
   version "3.2.7"

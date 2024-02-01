@@ -1,6 +1,6 @@
 import {useMemo} from 'react';
 import * as d3 from 'd3';
-import {timeAxisProps} from '../../models';
+import {timeAxisProps} from '../../types';
 
 
 export const TimeAxisX = (props: timeAxisProps) => {
@@ -32,7 +32,7 @@ export const TimeAxisX = (props: timeAxisProps) => {
 
 
     const generateTick = (value: Date) => {
-        console.log(domain[1].getTime() - domain[0].getTime(),'time'); 
+        // console.log(domain[1].getTime() - domain[0].getTime(),'time');
 
         if(Math.floor(domain[1].getTime()) - Math.floor(domain[0].getTime())  > 48 * 60 * 60 * 1000)
             return `${value.getMonth()+1}/${value.getDate()}/${value.getFullYear()}`;

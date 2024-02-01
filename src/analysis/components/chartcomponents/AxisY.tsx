@@ -29,7 +29,7 @@ export const AxisY = ({
         range.join('-')
     ]);
 
-    console.log(ticks, 'ticks');
+    // console.log(ticks, 'ticks');
 
     return (
         <svg>

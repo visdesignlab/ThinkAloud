@@ -5,6 +5,7 @@ import AppNav from './components/basics/AppNav';
 import {GlobalConfig} from '../parser/types';
 import {useLocation} from 'react-router-dom';
 import {Dashboard} from './dashboard/Dashboard';
+import {StatsBoard} from './stats/StatsBoard';
 
 export interface AnalysisInterfaceProps {
     globalConfig: GlobalConfig
@@ -21,6 +22,8 @@ export function AnalysisInterface(props: AnalysisInterfaceProps) {
                 <AppHeader />
                 <AppNav />
                 {page === 'dashboard' && <Dashboard globalConfig={props.globalConfig}/>}
+                {page === 'stats' && <StatsBoard globalConfig={props.globalConfig}/>}
+
             </AppShell>
     );
 }

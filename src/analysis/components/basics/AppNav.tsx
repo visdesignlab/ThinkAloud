@@ -1,5 +1,5 @@
 import { Box, Navbar, NavLink, Text } from '@mantine/core';
-import { IconZoomQuestion, IconLayoutDashboard, IconChevronRight, IconBrowserPlus } from '@tabler/icons-react';
+import { IconZoomQuestion, IconLayoutDashboard, IconChevronRight, IconBrowserPlus, IconChartArrowsVertical } from '@tabler/icons-react';
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 // import { useNavigate } from 'react-router-dom';
@@ -27,6 +27,13 @@ export default function AppNav() {
                             onClick={() => onClickLink('dashboard')}
                             label={<Text fz="lg"> Dashboard </Text>}
                             icon={<IconLayoutDashboard size="2rem" stroke={1.5} color="#4287f5" />}
+                            rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
+                        />
+                        <NavLink
+                            active={activeTab === 'stats'}
+                            onClick={() => onClickLink('stats')}
+                            label={<Text fz="lg"> Stats </Text>}
+                            icon={<IconChartArrowsVertical size="2rem" stroke={1.5} color="#4287f5"  />}
                             rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
                         />
                         <NavLink
