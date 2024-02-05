@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Loading from '../components/basics/Loading';
-import {Box, Grid, Text} from '@mantine/core';
+import {Box, Grid} from '@mantine/core';
 import {FirebaseStorageEngine} from '../../storage/engines/FirebaseStorageEngine';
 import {ParticipantData} from '../../storage/types';
 import {SummaryBlockProps} from '../types';
@@ -13,15 +13,8 @@ export function SummaryBlock(props: SummaryBlockProps) {
     const [loading, setLoading] = useState(false);
     const [expData, setExpData] = useState<Record<string, ParticipantData[]>>({});
     const studyIds = globalConfig.configsList;
-
-
     // const storageEngine = new FirebaseStorageEngine();
-
-
-
-
     useEffect(() => {
-
         const init = async () => {
             setLoading(true);
             const allData:Record<string, ParticipantData[]> = {};
@@ -53,7 +46,8 @@ export function SummaryBlock(props: SummaryBlockProps) {
 
                 }
             };
-            await fetchAllData();
+            // if(!expData)
+                await fetchAllData();
         };
         init();
 
@@ -64,7 +58,6 @@ export function SummaryBlock(props: SummaryBlockProps) {
     return (
         <>
             <Box>
-                <Text mt={20} mb={20} fw={700} >Total Record: </Text>
                 <Grid>
                     {studyIds.map((studyID:string) =>
                         <Grid.Col md={12} xl={6}>

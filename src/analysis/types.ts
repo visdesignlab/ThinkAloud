@@ -10,6 +10,9 @@ export interface SummaryBlockProps  {
     globalConfig: GlobalConfig;
 }
 
+export interface HeaderProps {
+    studyIds: string[];
+}
 export interface SummaryPanelProps {
     studyId: string;
     data: ParticipantData[];

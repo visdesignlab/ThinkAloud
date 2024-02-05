@@ -6,7 +6,6 @@ import {
     Divider,
     Grid,
     ScrollArea,
-    Select,
     Stack, Tabs,
     Text,
     Title
@@ -17,7 +16,8 @@ import {ParticipantData} from '../../storage/types';
 import {FirebaseStorageEngine} from '../../storage/engines/FirebaseStorageEngine';
 import {getConfig} from '../utils';
 import Loading from '../components/basics/Loading';
-import {IconArrowDown, IconSquareCheck,IconProgressBolt} from '@tabler/icons-react';
+import {IconArrowDown, IconSquareCheck, IconProgressBolt, IconArrowUp} from '@tabler/icons-react';
+import {useSearchParams} from 'react-router-dom';
 
 
 export function StatsBoard(props: DashBoardProps){
@@ -29,12 +29,20 @@ export function StatsBoard(props: DashBoardProps){
     const [activeParticipant, setActiveParticipant] = useState<string>('');
     const [activeSequence, setActiveSequence] = useState<string[]>([]);
     const [activeTrial, setActiveTrial] = useState<string>('');
-    // const [activeAnswer, setActiveAnswer] = useState<Object>({});
+    const [activeAnswer, setActiveAnswer] = useState<Record<string, string>>({});
+    const [searchParams] = useSearchParams();
 
     const { globalConfig } = props;
-    const studyIds = globalConfig.configsList;
-    const selectorData = studyIds.map((id)=>{return {value: id, label: id};});
+    // const studyIds = globalConfig.configsList;
+    // const selectorData = studyIds.map((id)=>{return {value: id, label: id};});
 
+    console.log(activeAnswer);
+    useEffect(() => {
+        const exp = searchParams.get('exp');
+        if(exp){
+            setActiveExp(exp);
+        }
+    }, [searchParams]);
 
     const selectParticipant = (p:string) => {
         setActiveParticipant(p);
@@ -43,7 +51,7 @@ export function StatsBoard(props: DashBoardProps){
 
 
     useEffect(() => {
-        // setActiveAnswer({});
+        setActiveAnswer({});
     }, [activeTrial]);
 
 
@@ -51,10 +59,8 @@ export function StatsBoard(props: DashBoardProps){
 
 
     useEffect(() => {
-        console.log(activeParticipant,'active p');
         if(expData.length>0){
             if(activeParticipant === 'all'){
-                console.log(completed,'completed');
                 if(completed.length>0)
                     setActiveSequence(completed[0].sequence);
             }else{
@@ -113,30 +119,30 @@ export function StatsBoard(props: DashBoardProps){
         console.log(expData,'expData');
     }, [expData]);
 
+
+    useEffect(() => {
+        console.log(activeSequence,'activeSequence');
+    }, []);
+
     return (
         <>
-            <Container p={10} fluid  sx={(theme) => ({
-                backgroundColor: theme.colors.gray[0],
-            })}>
-                <Box maw={300} m={10}>
-                    <Select
-                        label="Select an experiment"
-                        placeholder="Pick one"
-                        data={selectorData}
-                        value={activeExp}
-                        onChange={setActiveExp}
-                    />
-                </Box>
-                <Divider />
+            <Container  fluid>
+                {/*<Box maw={300} m={10}>*/}
+                {/*    <Select*/}
+                {/*        label="Select an experiment"*/}
+                {/*        placeholder="Pick one"*/}
+                {/*        data={selectorData}*/}
+                {/*        value={activeExp}*/}
+                {/*        onChange={setActiveExp}*/}
+                {/*    />*/}
+                {/*</Box>*/}
+                {/*<Divider />*/}
                 {(activeExp && expData)?<Box
                     mt={10}
                     p={10}
-                    sx={() => ({
-                        backgroundColor: 'white',
-                    })}
                 >
                     <Grid>
-                        <Grid.Col span={4} maw={300}>
+                        <Grid.Col span={4} p={10} maw={300} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
                             <ScrollArea style={{ height: 550 }} type="scroll" >
                                 <Stack mb={10}>
                                     <Title> {activeExp}</Title>
@@ -209,18 +215,10 @@ export function StatsBoard(props: DashBoardProps){
 
                                     </Tabs.List>
                                 </Tabs>
-
-
-
-
-
-
-
                             </ScrollArea>
                         </Grid.Col>
-                        <Grid.Col span={8}>
                             <Grid.Col span={3}>
-                                <ScrollArea style={{ height: 550 }} type="scroll" >
+                                <ScrollArea style={{ height: 550 }} type="scroll" miw={70}>
                                     {activeSequence.length>0 && <Title order={4} mb={10}>Experiment Stages</Title>}
                                     {activeSequence.length>0 && activeSequence.map((trialName)=>{
                                         return trialName === 'end'?<Button fullWidth mt={10} variant={'outline'} size={'xs'}>{trialName}</Button>
@@ -239,14 +237,14 @@ export function StatsBoard(props: DashBoardProps){
                                     })}
                                 </ScrollArea>
                             </Grid.Col>
-
-                            <Grid.Col span={9}>
-
-                            </Grid.Col>
-                        </Grid.Col>
-
                     </Grid>
-                </Box>:<Title>Please select an experiment</Title>}
+                </Box>:
+                    <Box ml={'50%'}>
+                        <Box ml={200}>
+                            <IconArrowUp size={30} display={'block'}/>
+                        </Box>
+                        <Title>Please select an experiment</Title>
+                    </Box>}
                 <Loading isLoading={loading} />
 
 
