@@ -1,5 +1,6 @@
-import {GlobalConfig} from '../parser/types';
+import {GlobalConfig, StudyConfig} from '../parser/types';
 import {ParticipantData} from '../storage/types';
+import {StoredAnswer} from '../store/types';
 
 export interface DashBoardProps {
     globalConfig: GlobalConfig;
@@ -27,3 +28,33 @@ export interface timeAxisProps {
     domain: Date[];
     range: number[];
 }
+
+export interface StatsVisProps{
+    data: ParticipantData[];
+    config: StudyConfig;
+}
+
+export interface InfoPanelProps {
+    data: Record<string, StoredAnswer>;
+    trialName: string;
+}
+
+export interface BasicStats {
+    min: number;
+    max: number;
+    mean: number;
+    mid: number;
+    maxUser: string;
+    minUser: string;
+}
+
+export interface MeanVisProps {
+    stats: BasicStats;
+    trialName: string;
+}
+
+export interface AnswerPanelProps {
+    data: Record<string, Record<string, unknown>>;
+    trialName: string;
+}
+

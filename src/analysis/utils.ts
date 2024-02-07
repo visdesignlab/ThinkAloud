@@ -16,3 +16,11 @@ export const getConfig = async (studyId:string, globalConfig:GlobalConfig, datab
     return await fetchStudyConfig(`${configJSON.path}`, configKey, databaseSection);
 
 };
+
+export function toDisplayData(milliseconds:number) {
+    const minutes = Math.floor(milliseconds / (1000 * 60));
+    const seconds = ((milliseconds % (1000 * 60)) / 1000).toFixed(0);
+    return minutes>0 ? minutes + 'm ' + seconds + 's' : seconds + 's';
+}
+
+
