@@ -54,6 +54,13 @@ export interface MeanVisProps {
     trialName: string;
 }
 
+
+export interface CorrectVisProps {
+    correct: string[];
+    incorrect: string[];
+    trialName: string;
+}
+
 export interface AnswerPanelProps {
     data: Record<string, Record<string, unknown>>;
     trialName: string;
