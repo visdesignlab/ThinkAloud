@@ -6,14 +6,14 @@ import {toDisplayData} from '../../utils';
 
 
 export default function InfoPanel(props: InfoPanelProps) {
-    const {data,trialName} = props;
+    const {data,trialName,config} = props;
 
     const [timeStats, setTimeStats] = useState<BasicStats>();
 
 
 
     useEffect(() => {
-        console.log(data,'info panel data update');
+        // console.log(data,'info panel data update');
         function calculateStats(){
             let max = 0;
             let min = Number.MAX_VALUE;
@@ -53,28 +53,41 @@ export default function InfoPanel(props: InfoPanelProps) {
     }, [data]);
 
     return (
-        <Container fluid p ={10} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
-            {timeStats && <Group>
-                {trialName.length>0 && <Box>
-                    <Box>
-                        <Badge radius={'xs'} sx={{display:'inline'}}>Fastest:</Badge>
-                        <Text span>{' ' + timeStats.minUser}</Text>
+        <Container fluid p ={10}>
+            {timeStats && <Group >
+                {
+                    config && config.meta && <Box p={5} mih={105} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
+                        {Object.entries(config.meta).map(([key, value]) => (
+                            <Box>
+                                <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>{key}:</Badge>
+                                <Text span>{' ' + value}</Text>
+                            </Box>
+                        ))}
                     </Box>
-                    <Box>
-                        <Badge radius={'xs'} sx={{display:'inline'}}>Slowest:</Badge>
-                        <Text span>{' ' + timeStats.maxUser}</Text>
-                    </Box>
-                    <Box>
-                        <Badge radius={'xs'} sx={{display:'inline'}}>Mean:</Badge>
-                        <Text span>{ ' ' + toDisplayData(timeStats.mean)}</Text>
-                    </Box>
-                    <Box>
-                        <Badge radius={'xs'} sx={{display:'inline'}}>Median:</Badge>
-                        <Text span>{' ' + toDisplayData(timeStats.mid)}</Text>
+                }
+                {trialName.length>0 && <Group  sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
+                    <Box mih={105} p={5}>
+                        <Box>
+                            <Badge radius={'xs'} sx={{display:'inline'}}>Fastest:</Badge>
+                            <Text span>{' ' + timeStats.minUser}</Text>
+                        </Box>
+                        <Box>
+                            <Badge radius={'xs'} sx={{display:'inline'}}>Slowest:</Badge>
+                            <Text span>{' ' + timeStats.maxUser}</Text>
+                        </Box>
+                        <Box>
+                            <Badge radius={'xs'} sx={{display:'inline'}}>Mean:</Badge>
+                            <Text span>{ ' ' + toDisplayData(timeStats.mean)}</Text>
+                        </Box>
+                        <Box>
+                            <Badge radius={'xs'} sx={{display:'inline'}}>Median:</Badge>
+                            <Text span>{' ' + toDisplayData(timeStats.mid)}</Text>
 
+                        </Box>
                     </Box>
-                </Box>}
-                <MeanVis trialName={trialName} stats={timeStats}/>
+                    <MeanVis trialName={trialName} stats={timeStats}/>
+
+                </Group>}
 
             </Group>}
 

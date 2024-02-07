@@ -16,7 +16,7 @@ const chartSettings = {
 export default function MeanVis(props: MeanVisProps){
     const {stats, trialName} = props;
     const {min, max, mean, mid} = stats;
-    console.log(props,'vis props');
+    // console.log(props,'vis props');
 
     //igo
     const [ref, dms] = useChartDimensions(chartSettings);
@@ -42,8 +42,6 @@ export default function MeanVis(props: MeanVisProps){
                     <circle cx={xScale(mid)} cy={60} r={5} fill="red">
                             <title>Median:{mid}</title>
                     </circle>
-
-
                 </g>
             </svg></div>:<Box>
             <IconArrowLeft size={20}/>

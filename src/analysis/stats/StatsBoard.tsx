@@ -22,7 +22,7 @@ import {StudyConfig} from '../../parser/types';
 
 export function StatsBoard(props: DashBoardProps){
     const { globalConfig } = props;
-    console.log(globalConfig,'globalConfig');
+    // console.log(globalConfig,'globalConfig');
 
     const [activeExp, setActiveExp] = useState<string | null>(null);
     const [config, setConfig] = useState<StudyConfig>();
@@ -62,9 +62,6 @@ export function StatsBoard(props: DashBoardProps){
     //     setActiveParticipants([...activeParticipants,p]);
     // };
 
-    useEffect(() => {
-        console.log(completed,'completed');
-    }, [completed]);
 
 
 
@@ -122,9 +119,9 @@ export function StatsBoard(props: DashBoardProps){
 
     }, [activeExp]);
 
-    useEffect(() => {
-        console.log(expData,'expData');
-    }, [expData]);
+    // useEffect(() => {
+    //     console.log(expData,'expData');
+    // }, [expData]);
 
 
     return (

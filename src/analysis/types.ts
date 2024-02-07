@@ -1,4 +1,4 @@
-import {GlobalConfig, StudyConfig} from '../parser/types';
+import {GlobalConfig, IndividualComponent, InheritedComponent, StudyConfig} from '../parser/types';
 import {ParticipantData} from '../storage/types';
 import {StoredAnswer} from '../store/types';
 
@@ -37,6 +37,7 @@ export interface StatsVisProps{
 export interface InfoPanelProps {
     data: Record<string, StoredAnswer>;
     trialName: string;
+    config: IndividualComponent | InheritedComponent | undefined;
 }
 
 export interface BasicStats {
@@ -56,5 +57,6 @@ export interface MeanVisProps {
 export interface AnswerPanelProps {
     data: Record<string, Record<string, unknown>>;
     trialName: string;
+    config: IndividualComponent | InheritedComponent | undefined;
 }
 

@@ -6,13 +6,16 @@ import {StoredAnswer} from '../../store/types';
 // import { PREFIX } from '../../components/GlobalConfigParser';
 import InfoPanel from './components/InfoPanel';
 import AnswerPanel from './components/AnswerPanel';
+import {IndividualComponent, InheritedComponent} from '../../parser/types';
 export default function StatsVis(props:StatsVisProps) {
     const {config,data} = props;
-    console.log(data,'dataaa');
-    console.log(config,'configg');
+
+    // console.log(data,'dataaa');
+    // console.log(config,'configg');
     const [sequence, setSequence] = useState<string[]>(data[0].sequence);
     const [activeTrial, setActiveTrial] = useState<string>('');
     const [activeAnswers, setActiveAnswers] = useState<Record<string, StoredAnswer>>({});
+    const [activeConfig, setActiveConfig] = useState< IndividualComponent | InheritedComponent>();
 
     useEffect(() => {
         if(activeTrial.length>0){
@@ -22,15 +25,16 @@ export default function StatsVis(props:StatsVisProps) {
 
             });
             setActiveAnswers(activeA);
+            const trialConfig = config.components[activeTrial];
+            setActiveConfig(trialConfig);
         }
+        if(data.length>0)
+            setSequence(data[0].sequence);
 
     }, [activeTrial,data]);
 
 
-    useEffect(() => {
-        if(data.length>0)
-            setSequence(data[0].sequence);
-    }, [data]);
+
 
     const extractAnswers = () => {
         const answers: Record<string, Record<string, unknown>> = {};
@@ -61,8 +65,8 @@ export default function StatsVis(props:StatsVisProps) {
                 </Box>
 
                 <Stack align="flex-start" p={5}>
-                    <InfoPanel trialName={activeTrial} data={activeAnswers}/>
-                    <AnswerPanel trialName={activeTrial} data={extractAnswers()}/>
+                    <InfoPanel config={activeConfig} trialName={activeTrial} data={activeAnswers}/>
+                    <AnswerPanel config={activeConfig} trialName={activeTrial} data={extractAnswers()}/>
 
                 </Stack>
 
