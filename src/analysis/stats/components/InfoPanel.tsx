@@ -1,7 +1,7 @@
 import {InfoPanelProps, BasicStats} from '../../types';
 import {useEffect, useState} from 'react';
 import MeanVis from '../vis/MeanVis';
-import {Badge, Box, Container, Group, Text} from '@mantine/core';
+import {Badge, Box, Container, Flex, Group, Text} from '@mantine/core';
 import {toDisplayData} from '../../utils';
 
 
@@ -54,7 +54,32 @@ export default function InfoPanel(props: InfoPanelProps) {
 
     return (
         <Container fluid p ={10}>
-            {timeStats && <Group >
+            <Flex gap="lg"
+                  justify="center"
+                  align="flex-start"
+                  direction="row"
+                  wrap="wrap">
+
+                <Box mih={105} p = {5}  sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
+                    {
+                        config?.instruction &&
+                        <Box>
+                            <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>instruction:</Badge>
+                            <Text span>{' ' + config?.instruction}</Text>
+                        </Box>
+                    }
+                    {
+                        config?.description &&
+                        <Box>
+                            <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>description:</Badge>
+                            <Text span>{' ' + config?.description}</Text>
+                        </Box>
+                    }
+
+                </Box>
+
+
+                {/*meta*/}
                 {
                     config && config.meta && <Box p={5} mih={105} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
                         {Object.entries(config.meta).map(([key, value]) => (
@@ -65,7 +90,9 @@ export default function InfoPanel(props: InfoPanelProps) {
                         ))}
                     </Box>
                 }
-                {trialName.length>0 && <Group  sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
+
+            { timeStats && trialName.length>0 &&
+                <Group  sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
                     <Box mih={105} p={5}>
                         <Box>
                             <Badge radius={'xs'} sx={{display:'inline'}}>Fastest:</Badge>
@@ -88,8 +115,8 @@ export default function InfoPanel(props: InfoPanelProps) {
                     <MeanVis trialName={trialName} stats={timeStats}/>
 
                 </Group>}
+            </Flex>
 
-            </Group>}
 
 
         </Container>

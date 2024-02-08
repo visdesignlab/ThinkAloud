@@ -61,6 +61,17 @@ export interface CorrectVisProps {
     trialName: string;
 }
 
+export interface BarProps {
+    name: string,
+    value: number;
+}
+
+export interface CategoricalVisProps {
+    data: BarProps[];
+    trialName: string;
+    correctValue: string;
+}
+
 export interface AnswerPanelProps {
     data: Record<string, Record<string, unknown>>;
     trialName: string;

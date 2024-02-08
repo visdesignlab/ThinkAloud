@@ -12,6 +12,7 @@ export const Bars = ({
   xScale: ScaleBand<string>;
   height: number;
 }) => {
+  console.log(data,'data in bars');
   return (
     <g>
       {

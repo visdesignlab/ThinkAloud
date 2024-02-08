@@ -1,4 +1,4 @@
-import {Box, Button, Center, Group, Paper, ScrollArea, Stack, Title} from '@mantine/core';
+import {Box, Button, Center, Flex, Paper, ScrollArea, Stack, Title} from '@mantine/core';
 import {StatsVisProps} from '../types';
 import {useEffect, useState} from 'react';
 import {IconArrowDown} from '@tabler/icons-react';
@@ -47,7 +47,7 @@ export default function StatsVis(props:StatsVisProps) {
 
     return (
         <Paper p={10} m={10} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
-            <Group>
+            <Flex>
                 <Box pr={5} sx={{boxShadow: '3px 0 0 0 orange'}}>
                     <Center><Title order={4}>Trials</Title></Center>
                     <ScrollArea.Autosize maxHeight={600} mih={500} maw={200} mx={'auto'}>
@@ -71,7 +71,7 @@ export default function StatsVis(props:StatsVisProps) {
                 </Stack>
 
 
-            </Group>
+            </Flex>
 
         </Paper>
     );
