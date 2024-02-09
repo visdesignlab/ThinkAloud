@@ -7,13 +7,16 @@ import {
 
 import logo from '../../assets/revisitLogoSquare.svg';
 import {IconHome, IconDeviceDesktopAnalytics} from '@tabler/icons-react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useSearchParams} from 'react-router-dom';
 import React, {useState} from 'react';
 import {HeaderProps} from '../../types';
 
 export default function AppHeader(props:HeaderProps) {
     const { studyIds } = props;
-    const [activeExp, setActiveExp] = useState<string | null>(null);
+    const [searchParams] = useSearchParams();
+    const exp = searchParams.get('exp');
+
+    const [activeExp, setActiveExp] = useState<string | null>(exp || null);
     const navigate = useNavigate();
     const page = location.pathname.split('/')[2];
     const selectorData = studyIds.map((id)=>{return {value: id, label: id};});

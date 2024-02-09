@@ -1,7 +1,7 @@
 import {Box, Button, Center, Flex, Paper, ScrollArea, Stack, Title} from '@mantine/core';
 import {StatsVisProps} from '../types';
 import {useEffect, useState} from 'react';
-import {IconArrowDown} from '@tabler/icons-react';
+import {IconArrowDown, IconArrowLeft} from '@tabler/icons-react';
 import {StoredAnswer} from '../../store/types';
 // import { PREFIX } from '../../components/GlobalConfigParser';
 import InfoPanel from './components/InfoPanel';
@@ -64,11 +64,14 @@ export default function StatsVis(props:StatsVisProps) {
                     </ScrollArea.Autosize>
                 </Box>
 
-                <Stack align="flex-start" p={5}>
+                {activeTrial.length>0 ?<Stack align="flex-start" p={5}>
                     <InfoPanel config={activeConfig} trialName={activeTrial} data={activeAnswers}/>
                     <AnswerPanel config={activeConfig} trialName={activeTrial} data={extractAnswers()}/>
 
                 </Stack>
+                    :
+                    <Center><Title order={2} ml={10}><IconArrowLeft size={30}/> Please Select a trial to view the stats</Title></Center>
+                }
 
 
             </Flex>

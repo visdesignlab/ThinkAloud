@@ -131,6 +131,7 @@ export function StatsBoard(props: DashBoardProps){
                     mt={10}
                     p={10}
                 >
+
                     <Paper  p={10} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
                         <Group>
                                 <Stack spacing={'xs'} mb={10}>

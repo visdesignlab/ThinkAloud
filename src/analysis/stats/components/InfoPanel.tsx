@@ -63,14 +63,14 @@ export default function InfoPanel(props: InfoPanelProps) {
                 <Box mih={105} p = {5}  sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
                     {
                         config?.instruction &&
-                        <Box>
+                        <Box maw={400}>
                             <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>instruction:</Badge>
                             <Text span>{' ' + config?.instruction}</Text>
                         </Box>
                     }
                     {
                         config?.description &&
-                        <Box>
+                        <Box maw={400}>
                             <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>description:</Badge>
                             <Text span>{' ' + config?.description}</Text>
                         </Box>
@@ -81,7 +81,7 @@ export default function InfoPanel(props: InfoPanelProps) {
 
                 {/*meta*/}
                 {
-                    config && config.meta && <Box p={5} mih={105} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
+                    config && config.meta && <Box maw={300} p={5} mih={105} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
                         {Object.entries(config.meta).map(([key, value]) => (
                             <Box>
                                 <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>{key}:</Badge>
