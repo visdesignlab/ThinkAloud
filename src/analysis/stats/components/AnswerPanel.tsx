@@ -154,11 +154,17 @@ export default function AnswerPanel(props: AnswerPanelProps){
                            return  <AnswerSubPanelText textAnswers={textAnswers[res.id]} qid={res.id}
                                                        prompt={res.prompt}
                                                        type={res.type}
+                                                       correctValue={correctValue[res.id] as string}
+                                                       correctUser={correctUser[res.id]}
+                                                       incorrectUser={incorrectUser[res.id]}
                                                        trialName={trialName}  />;
                        case 'longText':
                            return  <AnswerSubPanelText textAnswers={textAnswers[res.id]} qid={res.id}
                                                        prompt={res.prompt}
                                                        type={res.type}
+                                                       correctValue={correctValue[res.id] as string}
+                                                       correctUser={correctUser[res.id]}
+                                                       incorrectUser={incorrectUser[res.id]}
                                                        trialName={trialName}  />;
                        case 'dropdown':
                            return <AnswerSubPanel

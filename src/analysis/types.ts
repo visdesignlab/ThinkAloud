@@ -86,38 +86,29 @@ export interface AnswerPanelProps {
     config: IndividualComponent | InheritedComponent | undefined;
 }
 
-export interface AnswerSubPanelProps {
+export interface AnswerSubPanelBaseProps {
     correctUser: string[];
     incorrectUser: string[];
-    stats:  StatsVisProps[];
-    correctValue: string;
     trialName: string;
     type: string
     qid:string;
     prompt:string;
 }
 
-export interface AnswerSubPanelNumericalProps {
+export interface AnswerSubPanelProps extends AnswerSubPanelBaseProps {
+    stats:  StatsVisProps[];
+    correctValue: string;
+}
+
+export interface AnswerSubPanelNumericalProps extends AnswerSubPanelBaseProps{
     max?: number;
     min?: number;
     data: number[];
-    correctUser: string[];
-    incorrectUser: string[];
-    type: string;
-    qid:string;
-    prompt:string;
     correctValue: number;
-    trialName: string;
 }
 
-export interface AnswerSubPanelTextProps {
+export interface AnswerSubPanelTextProps extends AnswerSubPanelBaseProps{
     textAnswers: Map<string,string>;
-    qid:string;
-    prompt:string;
-    type:string;
-    trialName:string;
-    correctUser: string[];
-    incorrectUser: string[];
     correctValue: string;
 }
 
