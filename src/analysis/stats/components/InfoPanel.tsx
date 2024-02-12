@@ -1,13 +1,13 @@
 import {InfoPanelProps, BasicStats} from '../../types';
 import {useEffect, useState} from 'react';
 import MeanVis from '../vis/MeanVis';
-import {Badge, Box, Container, Flex, Group, Text} from '@mantine/core';
+import {Badge, Box, Container, Flex, Group, Text, Title} from '@mantine/core';
 import {toDisplayData} from '../../utils';
 
 
 export default function InfoPanel(props: InfoPanelProps) {
     const {data,trialName,config} = props;
-
+    console.log(data,'data in info panel');
     const [timeStats, setTimeStats] = useState<BasicStats>();
 
 
@@ -60,19 +60,18 @@ export default function InfoPanel(props: InfoPanelProps) {
                   direction="row"
                   wrap="wrap">
 
-                <Box mih={105} p = {5}  sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
+                <Box mih={100} p = {5}  sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
                     {
-                        config?.instruction &&
                         <Box maw={400}>
                             <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>instruction:</Badge>
-                            <Text span>{' ' + config?.instruction}</Text>
+                            <Text span>{ config?.instruction? ' '+config?.instruction : ' no instruction provided'}</Text>
                         </Box>
                     }
                     {
-                        config?.description &&
+
                         <Box maw={400}>
                             <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>description:</Badge>
-                            <Text span>{' ' + config?.description}</Text>
+                            <Text span>{ config?.description? ' '+config?.description : 'no description provided'}</Text>
                         </Box>
                     }
 
@@ -80,17 +79,22 @@ export default function InfoPanel(props: InfoPanelProps) {
 
 
                 {/*meta*/}
-                {
-                    config && config.meta && <Box maw={300} p={5} mih={105} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
-                        {Object.entries(config.meta).map(([key, value]) => (
-                            <Box>
-                                <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>{key}:</Badge>
-                                <Text span>{' ' + value}</Text>
-                            </Box>
-                        ))}
-                    </Box>
-                }
 
+                <Box miw={100} maw={300} p={5} mih={105} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
+                    {config && config.meta ? (
+                        <Box>
+                            <Title order={5}>Meta Data</Title>
+                            {Object.entries(config.meta).map(([key, value]) => (
+                                <Box key={key}>
+                                    <Badge color={'green'} radius={'xs'} sx={{ display: 'inline' }}>{key}:</Badge>
+                                    <Text span>{' ' + value}</Text>
+                                </Box>
+                            ))}
+                        </Box>
+                    ) : (
+                        <Title order={5}>No Meta Data</Title>
+                    )}
+                </Box>
             { timeStats && trialName.length>0 &&
                 <Group  sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
                     <Box mih={105} p={5}>

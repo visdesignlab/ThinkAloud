@@ -35,9 +35,6 @@ export function StatsBoard(props: DashBoardProps){
 
     const [searchParams] = useSearchParams();
 
-    // const studyIds = globalConfig.configsList;
-    // const selectorData = studyIds.map((id)=>{return {value: id, label: id};});
-
     useEffect(() => {
         if(activeParticipants.includes('All')){
             setDropdownData([{label:'All',value:'All'},...completed.map((d)=>{return {value:d.participantId,label:d.participantId, disabled:true};})]);
@@ -57,12 +54,6 @@ export function StatsBoard(props: DashBoardProps){
 
 
     }, [searchParams]);
-
-    // const selectParticipant = (p:string) => {
-    //     setActiveParticipants([...activeParticipants,p]);
-    // };
-
-
 
 
 
@@ -118,11 +109,6 @@ export function StatsBoard(props: DashBoardProps){
 
 
     }, [activeExp]);
-
-    // useEffect(() => {
-    //     console.log(expData,'expData');
-    // }, [expData]);
-
 
     return (
         <>
@@ -212,9 +198,6 @@ export function StatsBoard(props: DashBoardProps){
                 <Loading isLoading={loading} />
 
                 {activeParticipants.length>1 && config && <StatsVis  config={config} data={completed.filter((d)=>activeParticipants.includes(d.participantId))} />}
-
-
-
             </Container>
         </>
 

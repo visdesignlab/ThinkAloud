@@ -23,12 +23,10 @@ export default function CategoricalVis(props: CategoricalVisProps){
     };
 
     const maxValue = d3.max(data.map((d: { value: number }) => d.value));
-    console.log(data,'data in categorical vis');
 
     // console.log(props,'vis props');
 
     const [ref, dms] = useChartDimensions(chartSettings);
-    console.log(dms.boundedHeight,'dms.boundedHeight');
     const tickLength = 6;
     const xScale = d3
         .scaleBand()

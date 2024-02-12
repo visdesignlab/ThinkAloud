@@ -70,7 +70,11 @@ export default function StatsVis(props:StatsVisProps) {
 
                 </Stack>
                     :
-                    <Center><Title order={2} ml={10}><IconArrowLeft size={30}/> Please Select a trial to view the stats</Title></Center>
+                    <Center inline>
+                        <Box ml={10}>
+                            <IconArrowLeft size={30}/> <Title order={3} span>Please Select a trial to view the stats</Title>
+                        </Box>
+                    </Center>
                 }
 
 

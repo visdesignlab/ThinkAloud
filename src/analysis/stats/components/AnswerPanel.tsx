@@ -1,4 +1,4 @@
-import {Box, Container, Group} from '@mantine/core';
+import {Box, Container, Group, Title} from '@mantine/core';
 import {AnswerPanelProps, BarProps} from '../../types';
 import CorrectVis from '../vis/CorrectVis';
 import {useEffect, useState} from 'react';
@@ -14,13 +14,14 @@ export default function AnswerPanel(props: AnswerPanelProps){
 
 
 
+
     useEffect(() => {
         const responses = config?.response;
         const correct:string[] = [];
         const incorrect:string[] = [];
         if(responses){
             responses.forEach((response)=>{
-                console.log(response,'response');
+
                 const {id, correctAnswer} = response;
                 if(correctAnswer){
                     setCorrectValue(correctAnswer as string);
@@ -53,7 +54,6 @@ export default function AnswerPanel(props: AnswerPanelProps){
                             };
                         });
                         setCategoricalStats(categoryData);
-
                     }
 
                 }
@@ -74,7 +74,7 @@ export default function AnswerPanel(props: AnswerPanelProps){
         <Container p ={10} sx={{boxShadow:'1px 2px 2px 3px lightgrey;', borderRadius:'5px'}}>
             <Group mih={400}>
                 <Box>
-                    <CorrectVis correct={correctUser} incorrect={incorrectUser} trialName={trialName} />
+                    {correctUser.length>0 || incorrectUser.length>0 ? <CorrectVis correct={correctUser} incorrect={incorrectUser} trialName={trialName}/> : <Title order={5}>Correct answer not provided</Title>}
                 </Box>
                 <Box>
                     <CategoricalVis data={categoricalStats} trialName={trialName} correctValue={correctValue}/>
