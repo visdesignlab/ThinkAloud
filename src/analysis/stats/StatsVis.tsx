@@ -1,5 +1,5 @@
 import {Box, Button, Center, Flex, Paper, ScrollArea, Stack, Title} from '@mantine/core';
-import {StatsVisProps} from '../types';
+import {StatsVisAreaProps} from '../types';
 import {useEffect, useState} from 'react';
 import {IconArrowDown, IconArrowLeft} from '@tabler/icons-react';
 import {StoredAnswer} from '../../store/types';
@@ -7,7 +7,7 @@ import {StoredAnswer} from '../../store/types';
 import InfoPanel from './components/InfoPanel';
 import AnswerPanel from './components/AnswerPanel';
 import {IndividualComponent, InheritedComponent} from '../../parser/types';
-export default function StatsVis(props:StatsVisProps) {
+export default function StatsVis(props:StatsVisAreaProps) {
     const {config,data} = props;
 
     // console.log(data,'dataaa');

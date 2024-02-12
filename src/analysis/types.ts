@@ -29,7 +29,7 @@ export interface timeAxisProps {
     range: number[];
 }
 
-export interface StatsVisProps{
+export interface StatsVisAreaProps{
     data: ParticipantData[];
     config: StudyConfig;
 }
@@ -61,20 +61,63 @@ export interface CorrectVisProps {
     trialName: string;
 }
 
-export interface BarProps {
+export interface StatsVisProps {
     name: string,
     value: number;
 }
 
 export interface CategoricalVisProps {
-    data: BarProps[];
+    data: StatsVisProps[];
     trialName: string;
     correctValue: string;
+}
+
+export interface NumericalVisProps {
+    data: number[];
+    trialName: string;
+    correctValue: number;
+    min: number;
+    max: number;
 }
 
 export interface AnswerPanelProps {
     data: Record<string, Record<string, unknown>>;
     trialName: string;
     config: IndividualComponent | InheritedComponent | undefined;
+}
+
+export interface AnswerSubPanelProps {
+    correctUser: string[];
+    incorrectUser: string[];
+    stats:  StatsVisProps[];
+    correctValue: string;
+    trialName: string;
+    type: string
+    qid:string;
+    prompt:string;
+}
+
+export interface AnswerSubPanelNumericalProps {
+    max?: number;
+    min?: number;
+    data: number[];
+    correctUser: string[];
+    incorrectUser: string[];
+    type: string;
+    qid:string;
+    prompt:string;
+    correctValue: number;
+    trialName: string;
+}
+
+export interface AnswerSubPanelTextProps {
+    textAnswers: Map<string,string>;
+    qid:string;
+    prompt:string;
+    type:string;
+    trialName:string;
+    correctUser: string[];
+    incorrectUser: string[];
+    correctValue: string;
 }
 

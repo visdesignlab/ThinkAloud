@@ -46,8 +46,10 @@ export function StatsBoard(props: DashBoardProps){
         const updateParams = async () => {
             const exp = searchParams.get('exp');
             if(exp){
+                setActiveParticipants([]);
                 setActiveExp(exp);
                 setConfig(await getConfig(exp, globalConfig));
+
             }
         };
         updateParams();
