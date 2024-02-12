@@ -46,6 +46,7 @@ export function StatsBoard(props: DashBoardProps){
         const updateParams = async () => {
             const exp = searchParams.get('exp');
             if(exp){
+                console.log('reset');
                 setActiveParticipants([]);
                 setActiveExp(exp);
                 setConfig(await getConfig(exp, globalConfig));
@@ -74,16 +75,12 @@ export function StatsBoard(props: DashBoardProps){
 
     }, [activeParticipants]);
 
-    const reSetSelection = () => {
-        setActiveParticipants([]);
-    };
 
 
     useEffect(() => {
 
         const getData = async () => {
             setLoading(true);
-            reSetSelection();
             const fetchData = async () => {
                 if(activeExp){
                     const storageEngine = new FirebaseStorageEngine();
@@ -174,6 +171,7 @@ export function StatsBoard(props: DashBoardProps){
                                                           clearable miw={300}
                                                           data={dropdownData}
                                                           onChange={setActiveParticipants}
+                                                          value={activeParticipants}
                                             />
 
                                         </Paper>
@@ -187,9 +185,6 @@ export function StatsBoard(props: DashBoardProps){
                         </Group>
 
                     </Paper>
-
-
-
                 </Box>:
                     <Box ml={'50%'}>
                         <Box ml={200}>
@@ -200,6 +195,7 @@ export function StatsBoard(props: DashBoardProps){
                 <Loading isLoading={loading} />
 
                 {activeParticipants.length>1 && config && <StatsVis  config={config} data={completed.filter((d)=>activeParticipants.includes(d.participantId))} />}
+                {activeParticipants.length ===0 && <Title ml={200} order = {4}><IconArrowUp size={30}/>Select 1 participant to check individual detials, select 2+ participants to check stats</Title>}
             </Container>
         </>
 
