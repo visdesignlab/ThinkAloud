@@ -9,13 +9,13 @@ import { useDisclosure } from '@mantine/hooks';
 import { useStudyConfig } from '../../store/hooks/useStudyConfig';
 import { deepCopy } from '../../utils/deepCopy';
 import { useCurrentStep } from '../../routes';
-import { IndividualComponent, InheritedComponent, OrderObject } from '../../parser/types';
+import { IndividualComponent, InheritedComponent, ComponentBlock } from '../../parser/types';
 
-function getFlatMap(orderObj: OrderObject): string[] {
+function getFlatMap(orderObj: ComponentBlock): string[] {
   return orderObj.components.flatMap((component) => (typeof component === 'string' ? component : getFlatMap(component)));
 }
 
-function getVisibleChildComponent(sequence: string[], orderObj: OrderObject) {
+function getVisibleChildComponent(sequence: string[], orderObj: ComponentBlock) {
   const flatObj = getFlatMap(orderObj);
 
   const visibleChild = flatObj.find(
@@ -25,7 +25,7 @@ function getVisibleChildComponent(sequence: string[], orderObj: OrderObject) {
   return visibleChild;
 }
 
-function getVisibleChildrenComponents(sequence: string[], orderObj: OrderObject) {
+function getVisibleChildrenComponents(sequence: string[], orderObj: ComponentBlock) {
   const flatObj = getFlatMap(orderObj);
 
   const visibleChildren = flatObj.filter(
@@ -113,7 +113,7 @@ export function StepsPanel({
   depth = 0,
 }: {
   sequence: string[];
-  order: OrderObject;
+  order: ComponentBlock;
   depth?: number;
 }) {
   const { studyId = null } = useParams<{

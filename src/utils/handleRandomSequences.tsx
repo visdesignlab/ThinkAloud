@@ -1,13 +1,13 @@
 // eslint-disable-next-line import/no-unresolved
 import latinSquare from '@quentinroy/latin-square';
-import { OrderObject, StudyConfig } from '../parser/types';
+import { ComponentBlock, StudyConfig } from '../parser/types';
 import { deepCopy } from './deepCopy';
 
 function _orderObjectToList(
-  order: OrderObject,
+  order: ComponentBlock,
   pathsFromFirebase: Record<string, string[][]>,
   path: string,
-) : (string | OrderObject)[] | string {
+) : (string | ComponentBlock)[] | string {
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < order.components.length; i++) {
     const curr = order.components[i];
@@ -35,16 +35,16 @@ function _orderObjectToList(
 }
 
 function orderObjectToList(
-  order: OrderObject,
+  order: ComponentBlock,
   pathsFromFirebase: Record<string, string[][]>,
-) : (string | OrderObject)[] {
+) : (string | ComponentBlock)[] {
   const orderCopy = deepCopy(order);
 
   _orderObjectToList(orderCopy, pathsFromFirebase, 'root');
   return orderCopy.components.slice(0, orderCopy.numSamples ? orderCopy.numSamples : undefined).flat();
 }
 
-function _createRandomOrders(order: OrderObject, paths: string[], path: string, index = 0) {
+function _createRandomOrders(order: ComponentBlock, paths: string[], path: string, index = 0) {
   const newPath = path.length > 0 ? `${path}-${index}` : 'root';
   if (order.order === 'latinSquare') {
     paths.push(newPath);
@@ -57,7 +57,7 @@ function _createRandomOrders(order: OrderObject, paths: string[], path: string, 
   });
 }
 
-function createRandomOrders(order: OrderObject) {
+function createRandomOrders(order: ComponentBlock) {
   const paths: string[] = [];
   _createRandomOrders(order, paths, '', 0);
 
@@ -67,16 +67,16 @@ function createRandomOrders(order: OrderObject) {
 function generateLatinSquare(config: StudyConfig, path: string) {
   const pathArr = path.split('-');
 
-  let locationInSequence: Partial<OrderObject> | string = {};
+  let locationInSequence: Partial<ComponentBlock> | string = {};
   pathArr.forEach((p) => {
     if (p === 'root') {
       locationInSequence = config.sequence;
     } else {
-      locationInSequence = (locationInSequence as OrderObject).components[+p];
+      locationInSequence = (locationInSequence as ComponentBlock).components[+p];
     }
   });
 
-  const options = (locationInSequence as OrderObject).components.map((c: unknown, i: number) => (typeof c === 'string' ? c : `_orderObj${i}`));
+  const options = (locationInSequence as ComponentBlock).components.map((c: unknown, i: number) => (typeof c === 'string' ? c : `_orderObj${i}`));
   const newSquare: string[][] = latinSquare<string>(options.sort(() => 0.5 - Math.random()), true);
   return newSquare;
 }
