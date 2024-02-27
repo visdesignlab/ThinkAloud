@@ -595,7 +595,8 @@
                 "category": "Survived",
                 "ids": "Name",
                 "brushType": "Paintbrush Selection",
-                "columns": ["PassengerClass", "Sex", "Age", "SiblingsOrSpouse", "ParentsOrChildren", "Fare"]
+                "columns": ["PassengerClass", "Sex", "Age", "SiblingsOrSpouse", "ParentsOrChildren", "Fare"],
+                "catColumns": ["PassengerClass", "Sex", "SiblingsOrSpouse", "ParentsOrChildren"]
             },
             "response": [
                 {
