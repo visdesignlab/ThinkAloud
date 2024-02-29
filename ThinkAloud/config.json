@@ -599,7 +599,10 @@
                 "catColumns": ["Class", "Sex", "Siblings Or Spouse", "Parents Or Children"],
                 "brushState": {
                     "0": {
-                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Age", "id": 0, "type": "violin"
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Age", "yCol": "Fare", "id": 0, "type": "scatter"
+                      },
+                    "3": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Age", "id": 3, "type": "violin"
                       },
                     "1": {
                         "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Siblings Or Spouse", "yCol": "Siblings Or Spouse", "id": 1, "type": "histogram"
@@ -638,7 +641,10 @@
                 "columns": ["Class", "Sex", "Age", "Siblings Or Spouse", "Parents Or Children", "Fare"],
                 "brushState": {
                     "0": {
-                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Age", "id": 0, "type": "violin"
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Age", "yCol": "Fare", "id": 0, "type": "scatter"
+                      },
+                    "2": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Age", "id": 2, "type": "violin"
                       },
                     "1": {
                         "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Sex", "id": 1, "type": "histogram"
@@ -674,7 +680,10 @@
                 "columns": ["Class", "Sex", "Age", "Siblings Or Spouse", "Parents Or Children", "Fare"],
                 "brushState": {
                     "0": {
-                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Fare", "id": 0, "type": "violin"
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Age", "yCol": "Fare", "id": 0, "type": "scatter"
+                      },
+                    "2": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Fare", "id": 2, "type": "violin"
                       },
                     "1": {
                         "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Class", "id": 1, "type": "histogram"
