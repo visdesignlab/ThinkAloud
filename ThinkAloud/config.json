@@ -587,7 +587,7 @@
         },
         "happinessComplex1Titanic": {
             "baseComponent": "scatterPlot",
-            "instruction": "Who was on the ship? Was it mostly families or individuals? How old were they? <br> <br> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data.",
+            "instruction": "Analyze who was on the ship. For example, was it mostly families or individuals? How old were they? <br> <br> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data.",
             "parameters": {
                 "dataset": "titanic",
                 "x": "Fare",
@@ -595,13 +595,24 @@
                 "category": "Survived",
                 "ids": "Name",
                 "brushType": "Paintbrush Selection",
-                "columns": ["PassengerClass", "Sex", "Age", "SiblingsOrSpouse", "ParentsOrChildren", "Fare"],
-                "catColumns": ["PassengerClass", "Sex", "SiblingsOrSpouse", "ParentsOrChildren"]
+                "columns": ["Class", "Sex", "Age", "Siblings Or Spouse", "Parents Or Children", "Fare"],
+                "catColumns": ["Class", "Sex", "Siblings Or Spouse", "Parents Or Children"],
+                "brushState": {
+                    "0": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Age", "id": 0, "type": "violin"
+                      },
+                    "1": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Siblings Or Spouse", "yCol": "Siblings Or Spouse", "id": 1, "type": "histogram"
+                    },
+                    "2": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Parents Or Children", "yCol": "Parents Or Children", "id": 2, "type": "histogram"
+                    }
+                }
             },
             "response": [
                 {
                     "id": "completedResponse",
-                    "prompt": "Are you done answering the question?",
+                    "prompt": "Have you verbalized your answer?",
                     "required": true,
                     "location": "sidebar",
                     "type": "radio",
@@ -624,12 +635,20 @@
                 "category": "Survived",
                 "ids": "Name",
                 "brushType": "Paintbrush Selection",
-                "columns": ["PassengerClass", "Sex", "Age", "SiblingsOrSpouse", "ParentsOrChildren", "Fare"]
+                "columns": ["Class", "Sex", "Age", "Siblings Or Spouse", "Parents Or Children", "Fare"],
+                "brushState": {
+                    "0": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Age", "id": 0, "type": "violin"
+                      },
+                    "1": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Sex", "id": 1, "type": "histogram"
+                    }
+                }
             },
             "response": [
                 {
                     "id": "completedResponse",
-                    "prompt": "Are you done answering the question?",
+                    "prompt": "Have you verbalized your answer?",
                     "required": true,
                     "location": "sidebar",
                     "type": "radio",
@@ -652,12 +671,20 @@
                 "category": "Survived",
                 "ids": "Name",
                 "brushType": "Paintbrush Selection",
-                "columns": ["PassengerClass", "Sex", "Age", "SiblingsOrSpouse", "ParentsOrChildren", "Fare"]
+                "columns": ["Class", "Sex", "Age", "Siblings Or Spouse", "Parents Or Children", "Fare"],
+                "brushState": {
+                    "0": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Fare", "id": 0, "type": "violin"
+                      },
+                    "1": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Class", "id": 1, "type": "histogram"
+                    }
+                }
             },
             "response": [
                 {
                     "id": "completedResponse",
-                    "prompt": "Are you done answering the question?",
+                    "prompt": "Have you verbalized your answer?",
                     "required": true,
                     "location": "sidebar",
                     "type": "radio",
@@ -680,12 +707,12 @@
                 "category": "Survived",
                 "ids": "Name",
                 "brushType": "Paintbrush Selection",
-                "columns": ["PassengerClass", "Sex", "Age", "SiblingsOrSpouse", "ParentsOrChildren", "Fare"]
+                "columns": ["Class", "Sex", "Age", "Siblings Or Spouse", "Parents Or Children", "Fare"]
             },
             "response": [
                 {
                     "id": "completedResponse",
-                    "prompt": "Are you done answering the question?",
+                    "prompt": "Have you verbalized your answer?",
                     "required": true,
                     "location": "sidebar",
                     "type": "radio",
@@ -759,58 +786,49 @@
             "response": [
                 {
                     "id": "q1",
-                    "prompt": "How useful did you find the rectangular selection method? ",
+                    "prompt": "How comfortable were you answering questions out loud?",
                     "required": true,
                     "location": "aboveStimulus",
                     "type": "likert",
                     "preset": 7,
-                    "rightLabel": "Like",
-                    "leftLabel": "Dislike"
+                    "rightLabel": "Very comfortable",
+                    "leftLabel": "Not comfortable"
                 },
                 {
                     "id": "q2",
-                    "prompt": "How useful did you find the axis-aligned selection? ",
+                    "prompt": "How awkward was answering questions out loud?",
                     "required": true,
                     "location": "aboveStimulus",
                     "type": "likert",
                     "preset": 7,
-                    "rightLabel": "Like",
-                    "leftLabel": "Dislike"
+                    "rightLabel": "Not awkward",
+                    "leftLabel": "Very awkward"
                 },
                 {
                     "id": "q3",
-                    "prompt": "How useful did you find the paint-brush selection?",
+                    "prompt": "Have you done studies on Prolific before which asked you to speak?",
                     "required": true,
                     "location": "aboveStimulus",
-                    "type": "likert",
-                    "preset": 7,
-                    "rightLabel": "Like",
-                    "leftLabel": "Dislike"
-                },
-                {
-                    "id": "q4",
-                    "prompt": "How useful did you find the slider selection?",
-                    "required": true,
-                    "location": "aboveStimulus",
-                    "type": "likert",
-                    "preset": 7,
-                    "rightLabel": "Like",
-                    "leftLabel": "Dislike"
+                    "type": "radio",
+                    "options": [
+                        {
+                            "label": "No",
+                            "value": "no"
+                        },
+                        {
+                            "label": "Yes",
+                            "value": "yes"
+                        }
+                    ]
                 },
                 {
                     "id": "q5",
-                    "prompt": "Please provide any comments about the different methods",
+                    "prompt": "Please provide any comments about the process of answering questions out loud.",
                     "required": false,
                     "location": "aboveStimulus",
                     "type": "longText",
                     "placeholder": "Enter your comments here"
-                }
-            ]
-        },
-        "survey": {
-            "type": "markdown",
-            "path": "VLAT-mini-randomized/survey.md",
-            "response": [
+                },
                 {
                     "id": "surveyExperience",
                     "prompt": "Did you experience any problems with our tool?",
@@ -863,8 +881,7 @@
                     "happinessComplex4Titanic"
                 ]
             },
-            "post-study-survey",
-            "survey"
+            "post-study-survey"
         ]
     }
 }
