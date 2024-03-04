@@ -14,9 +14,11 @@
             "University of Toronto"
         ]
     },
+    "recordStudyAudio": true,
+    "tasksToNotRecordAudio": ["introduction", "consent"],
     "uiConfig": {
         "contactEmail": "cnobre@cs.toronto.edu",
-        "helpTextPath": "ThinkAloud/tutorial.md",
+        "helpTextPath": "ThinkAloud/titanicTutorial.md",
         "logoPath": "assets/revisitLogoSquare.svg",
         "withProgressBar": true,
         "autoDownloadStudy": false,
@@ -124,6 +126,12 @@
                     "min": 0
                 }
             ]
+        },
+        "audioTest": {
+            "description": "Audio test",
+            "type": "react-component",
+            "path": "ThinkAloud/AudioTest.tsx",
+            "response": []
         },
         "rectangleBrush_q2": {
             "baseComponent": "scatterPlot",
@@ -301,7 +309,7 @@
         },
         "paintBrush_q3": {
             "baseComponent": "scatterPlot",
-            "instruction": "How many Gentoo penguins weigh less than 4.5k grams (g)? <br> <br> While answering this question, please verbalize your thoughts, especially any insights you have or problems you run into.",
+            "instruction": "How many Gentoo penguins weigh less than 4.5k grams (g)? <br> <br> <b> While answering this question, please verbalize your thoughts, especially any insights you have or problems you run into. </b>",
             "parameters": {
                 "dataset": "penguin",
                 "x": "Body Mass (g)",
@@ -383,7 +391,7 @@
         },
         "paintBrush_q4": {
             "baseComponent": "scatterPlot",
-            "instruction": "Consider only penguins that weigh between 4k and 5k grams (g) and have flipper lengths between 200 and 215mm. What is the most and least common type of penguin in this subset? <br> <br> While answering this question, please verbalize your thoughts, especially any insights you have or problems you run into.",
+            "instruction": "Consider only penguins that weigh between 4k and 5k grams (g) and have flipper lengths between 200 and 215mm. What is the most and least common type of penguin in this subset? <br> <br> <b> While answering this question, please verbalize your thoughts, especially any insights you have or problems you run into. </b>",
             "parameters": {
                 "dataset": "penguin",
                 "x": "Body Mass (g)",
@@ -441,7 +449,7 @@
         },
         "paintBrush_q1": {
             "baseComponent": "scatterPlot",
-            "instruction": "How many Adventure Movies have a production budget value greater than 100 million? <br> <br> While answering this question, please verbalize your thoughts, especially any insights you have or problems you run into.",
+            "instruction": "How many Adventure Movies have a production budget value greater than 100 million? <br> <br> <b> While answering this question, please verbalize your thoughts, especially any insights you have or problems you run into. </b>",
             "parameters": {
                 "dataset": "movies",
                 "x": "Production Budget",
@@ -465,7 +473,7 @@
         },
         "paintBrush_q2": {
             "baseComponent": "scatterPlot",
-            "instruction": "Consider only movies that had a production budget greater than 100 million and made less than 150  Million in Gross income. Which genres had the most and the least movies in this group of movies? <br> <br> While answering this question, please verbalize your thoughts, especially any insights you have or problems you run into.",
+            "instruction": "Consider only movies that had a production budget greater than 100 million and made less than 150  Million in Gross income. Which genres had the most and the least movies in this group of movies? <br> <br> <b> While answering this question, please verbalize your thoughts, especially any insights you have or problems you run into. </b>",
             "parameters": {
                 "dataset": "movies",
                 "x": "Production Budget",
@@ -587,7 +595,7 @@
         },
         "happinessComplex1Titanic": {
             "baseComponent": "scatterPlot",
-            "instruction": "Analyze who was on the ship. For example, was it mostly families or individuals? How old were they? <br> <br> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data.",
+            "instruction": "Analyze who was on the ship. For example, was it mostly families or individuals? How old were they? <br> <br> <b> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data. </b>",
             "parameters": {
                 "dataset": "titanic",
                 "x": "Fare",
@@ -630,7 +638,7 @@
         },
         "happinessComplex2Titanic": {
             "baseComponent": "scatterPlot",
-            "instruction": "Did women and children have a better survival rate than men? <br> <br> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data.",
+            "instruction": "Did women and children have a better survival rate than men? <br> <br> <b> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data.</b>",
             "parameters": {
                 "dataset": "titanic",
                 "x": "Sex",
@@ -669,7 +677,7 @@
         },
         "happinessComplex3Titanic": {
             "baseComponent": "scatterPlot",
-            "instruction": "How did class and ticket fare affect survival rate? <br> <br> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data.",
+            "instruction": "Did a passengers socio-economic conditions affect their survival rate? <br> <br> <b> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data. </b>",
             "parameters": {
                 "dataset": "titanic",
                 "x": "Fare",
@@ -683,7 +691,7 @@
                         "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Age", "yCol": "Fare", "id": 0, "type": "scatter"
                       },
                     "2": {
-                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Fare", "id": 2, "type": "violin"
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Age", "id": 2, "type": "violin"
                       },
                     "1": {
                         "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Class", "id": 1, "type": "histogram"
@@ -708,7 +716,7 @@
         },
         "happinessComplex4Titanic": {
             "baseComponent": "scatterPlot",
-            "instruction": "Explore the dataset for anything interesting to you. What insights do you gain from the data? <br> <br> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data.",
+            "instruction": "Explore the dataset for anything interesting to you. What insights do you gain from the data? <br> <br> <b> Please answer the question out loud, as well as verbalize any insights, questions, or problems you have while exploring the data. </b>",
             "parameters": {
                 "dataset": "titanic",
                 "x": "Fare",
@@ -716,7 +724,30 @@
                 "category": "Survived",
                 "ids": "Name",
                 "brushType": "Paintbrush Selection",
-                "columns": ["Class", "Sex", "Age", "Siblings Or Spouse", "Parents Or Children", "Fare"]
+                "columns": ["Class", "Sex", "Age", "Siblings Or Spouse", "Parents Or Children", "Fare"],
+                "brushState": {
+                    "0": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Age", "yCol": "Fare", "id": 0, "type": "scatter"
+                      },
+                    "2": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Age", "id": 2, "type": "violin"
+                      },
+                    "3": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Class", "yCol": "Class", "id": 3, "type": "histogram"
+                    },
+                    "1": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Age", "id": 1, "type": "violin"
+                    },
+                    "8": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Sex", "yCol": "Sex", "id": 8, "type": "histogram"
+                    },
+                    "5": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Siblings Or Spouse", "yCol": "Siblings Or Spouse", "id": 5, "type": "histogram"
+                    },
+                    "6": {
+                        "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Parents Or Children", "yCol": "Parents Or Children", "id": 6, "type": "histogram"
+                    }
+                }
             },
             "response": [
                 {
@@ -814,8 +845,16 @@
                     "leftLabel": "Very awkward"
                 },
                 {
+                    "id": "privacyQ",
+                    "prompt": "Do you have any privacy concerns about having your audio recorded?",
+                    "required": true,
+                    "location": "aboveStimulus",
+                    "type": "longText",
+                    "placeholder": "Enter your comments here"
+                },
+                {
                     "id": "q3",
-                    "prompt": "Have you done studies on Prolific before which asked you to speak?",
+                    "prompt": "Have you done online studies before which asked you to speak?",
                     "required": true,
                     "location": "aboveStimulus",
                     "type": "radio",
@@ -870,6 +909,7 @@
         "components": [
             "introduction",
             "consent",
+            "audioTest",
             "tutorial",
             {
                 "order": "random",

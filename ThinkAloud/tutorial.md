@@ -5,6 +5,6 @@ In this study you will complete 8 tasks using a paintbrush selection in one or m
 
 Click and drag to select points. Use the tool above the scatterplot to switch to deselect if you want to deselect points in your selection.
 
-<img src="./tutorialImages/paintbrush.gif" width="auto" height="300px">
+<img src="./tutorialImages/paintbrush.gif" width="auto" height="600px">
 
 

@@ -10,8 +10,7 @@ In the next section we will ask you a few questions about a dataset gathered fro
 - Parch    -- Number of parents or children aboard                                   
 - Fare     -- Price of ticket                                                        
 
-For this dataset, you may add or remove as many plots as you like, via the + button.
-
 Click on the help button if you'd like to see this information again during the questions.
 
-<img src="./tutorialImages/addPlot.gif" width="auto" height="300px">
+In addition to the plots seen in the previous questions, there will be additional plots which you may interact with. Feel free to click on any bar or violin to select, as well as using the paintbrush.
+
