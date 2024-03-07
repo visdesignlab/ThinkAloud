@@ -15,7 +15,7 @@
         ]
     },
     "recordStudyAudio": true,
-    "tasksToNotRecordAudio": ["introduction", "consent"],
+    "tasksToNotRecordAudio": ["introduction", "consent", "end"],
     "uiConfig": {
         "contactEmail": "cnobre@cs.toronto.edu",
         "helpTextPath": "ThinkAloud/titanicTutorial.md",
@@ -23,7 +23,7 @@
         "withProgressBar": true,
         "autoDownloadStudy": false,
         "sidebar": true,
-        "studyEndMsg": "**Thank you for completing the study. You may click this link and return to Prolific**: [https://app.prolific.com/submissions/complete?cc=C1MXB7XQ](https://app.prolific.com/submissions/complete?cc=C1MXB7XQ)",
+        "studyEndMsg": "**Thank you for completing the study. You may click this link and return to Prolific**: [https://app.prolific.com/submissions/complete?cc=C1L3V5MY](https://app.prolific.com/submissions/complete?cc=C1L3V5MY)",
         "urlParticipantIdParam": "PROLIFIC_PID"
     },
     "baseComponents": {
