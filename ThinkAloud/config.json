@@ -133,7 +133,15 @@
             "path": "ThinkAloud/AudioTest.tsx",
             "nextButtonLocation": "sidebar",
             "nextButtonText": "Continue",
-            "response": []
+            "response": [{
+                "id": "audioResponse",
+                "type": "radio", 
+                "required": true,
+                "hidden": true,
+                "location": "sidebar",
+                "prompt": "Found Audio",
+                "options": [{"label": "Yes", "value": "Yes"}]
+            }]
         },
         "rectangleBrush_q2": {
             "baseComponent": "scatterPlot",
@@ -604,9 +612,11 @@
                 "y": "Age",
                 "category": "Survived",
                 "ids": "Name",
+                "hideCat": true,
                 "brushType": "Paintbrush Selection",
                 "columns": ["Class", "Sex", "Age", "Siblings Or Spouse", "Parents Or Children", "Fare"],
                 "catColumns": ["Class", "Sex", "Siblings Or Spouse", "Parents Or Children"],
+
                 "brushState": {
                     "0": {
                         "hasBrush": false, "x1": 0, "y1": 0, "x2": 0, "y2": 0, "xCol": "Age", "yCol": "Fare", "id": 0, "type": "scatter"
