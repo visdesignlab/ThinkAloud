@@ -123,7 +123,7 @@
             "description": "Audio test",
             "type": "react-component",
             "path": "ThinkAloud/AudioTest.tsx",
-            "nextButtonLocation": "sidebar",
+            "nextButtonLocation": "belowStimulus",
             "nextButtonText": "Continue",
             "response": [{
                 "id": "audioResponse",
@@ -837,16 +837,6 @@
                     "preset": 7,
                     "rightLabel": "Very comfortable",
                     "leftLabel": "Not comfortable"
-                },
-                {
-                    "id": "q2",
-                    "prompt": "How awkward was answering questions out loud?",
-                    "required": true,
-                    "location": "aboveStimulus",
-                    "type": "likert",
-                    "preset": 7,
-                    "rightLabel": "Not awkward",
-                    "leftLabel": "Very awkward"
                 },
                 {
                     "id": "privacyQ",
