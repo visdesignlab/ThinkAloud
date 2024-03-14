@@ -3,7 +3,7 @@
 In the next section we will ask you a few questions about a dataset gathered from passengers of the Titanic. The dataset has the following data. 
 
 - Survived -- Whether or not the passenger survived                                  
-- Pclass   -- Class of the passenger. 1 is 1st class, 2 is 2nd class, 3 is 3rd class 
+- Passenger Class   -- Class of the passenger. 1 is 1st class, 2 is 2nd class, 3 is 3rd class 
 - Gender   -- Gender [Male, Female]                                                                 
 - Age      -- Age in years                                                           
 - Siblings or Spouse -- Number of siblings or spouses aboard for a passenger                                
