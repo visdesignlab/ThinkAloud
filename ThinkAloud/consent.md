@@ -52,7 +52,7 @@ identify you.
 As part of this study, we will record your audio, and ask you to verbalize your thought process as you go through the study. All audio will be recorded, saved, and transcribed for later use. 
 
 ## Cost/Payment
-Please check the Prolific description.
+20$ Via Amazon gift card
 
 ## Contact
 For more information about this research or about the rights of
