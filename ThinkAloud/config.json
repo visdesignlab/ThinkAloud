@@ -15,7 +15,7 @@
         ]
     },
     "recordStudyAudio": true,
-    "tasksToNotRecordAudio": ["introduction", "consent", "end"],
+    "tasksToNotRecordAudio": ["introduction", "consent", "post-study-survey", "end"],
     "uiConfig": {
         "contactEmail": "cnobre@cs.toronto.edu",
         "helpTextPath": "ThinkAloud/titanicTutorial.md",
