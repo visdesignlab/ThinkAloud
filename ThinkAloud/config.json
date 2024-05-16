@@ -14,7 +14,6 @@
             "University of Toronto"
         ]
     },
-    "recordStudyAudio": true,
     "tasksToNotRecordAudio": ["introduction", "consent", "post-study-survey", "end"],
     "uiConfig": {
         "contactEmail": "cnobre@cs.toronto.edu",
@@ -906,6 +905,7 @@
             "audioTest",
             "tutorial",
             {
+                
                 "order": "random",
                 "components": [
                     "paintBrush_q1",
