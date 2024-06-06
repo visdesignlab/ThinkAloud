@@ -18,7 +18,7 @@
     "uiConfig": {
         "contactEmail": "cnobre@cs.toronto.edu",
         "helpTextPath": "ThinkAloud/titanicTutorial.md",
-        "logoPath": "assets/revisitLogoSquare.svg",
+        "logoPath": "revisitAssets/revisitLogoSquare.svg",
         "withProgressBar": true,
         "autoDownloadStudy": false,
         "sidebar": true,
@@ -107,7 +107,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": 17,
                     "id": "response",
                     "prompt": "Answer:",
                     "required": true,
@@ -147,7 +146,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": "Japan",
                     "id": "max-response",
                     "prompt": "Most Cars:",
                     "required": true,
@@ -169,7 +167,6 @@
                     ]
                 },
                 {
-                    "correctAnswer": "Europe",
                     "id": "min-response",
                     "prompt": "Least Cars:",
                     "required": true,
@@ -206,7 +203,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": 32,
                     "id": "response",
                     "prompt": "Answer:",
                     "required": true,
@@ -231,7 +227,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": "sun",
                     "id": "max-response",
                     "prompt": "Most common Weather:",
                     "required": true,
@@ -257,7 +252,6 @@
                     ]
                 },
                 {
-                    "correctAnswer": "drizzle",
                     "id": "min-response",
                     "prompt": "Least common Weather:",
                     "required": true,
@@ -297,7 +291,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": 15,
                     "id": "response",
                     "prompt": "Answer:",
                     "required": true,
@@ -321,7 +314,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": 15,
                     "id": "response",
                     "prompt": "Answer:",
                     "required": true,
@@ -345,7 +337,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": "Gentoo",
                     "id": "max-response",
                     "prompt": "Most common Penguin:",
                     "required": true,
@@ -367,7 +358,6 @@
                     ]
                 },
                 {
-                    "correctAnswer": "Adelie",
                     "id": "min-response",
                     "prompt": "Least common Penguin:",
                     "required": true,
@@ -403,7 +393,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": "Gentoo",
                     "id": "max-response",
                     "prompt": "Most common Penguin:",
                     "required": true,
@@ -425,7 +414,6 @@
                     ]
                 },
                 {
-                    "correctAnswer": "Adelie",
                     "id": "min-response",
                     "prompt": "Least common Penguin:",
                     "required": true,
@@ -461,7 +449,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": 28,
                     "id": "response",
                     "prompt": "Answer:",
                     "required": true,
@@ -485,7 +472,6 @@
             },
             "response": [
                 {
-                    "correctAnswer": "Action",
                     "id": "max-response",
                     "prompt": "Most common Genre:",
                     "required": true,
@@ -511,7 +497,6 @@
                     ]
                 },
                 {
-                    "correctAnswer": "Comedy",
                     "id": "min-response",
                     "prompt": "Least common Genre:",
                     "required": true,
