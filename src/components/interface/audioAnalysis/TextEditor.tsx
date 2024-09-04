@@ -107,7 +107,7 @@ export function TextEditor({
     setTimeout(() => {
       textRefs.current[index - 1].focus();
       textRefs.current[index - 1].setSelectionRange(transcriptList[index - 1].text.length, transcriptList[index - 1].text.length, 'none');
-    });
+    }, 1);
   });
 
   // Special logic for when i hit enter in any of the text boxes. Create a new row below, moving text after the enter into the new row, and copy the tags into the new row
@@ -130,7 +130,7 @@ export function TextEditor({
     setTimeout(() => {
       textRefs.current[index + 1].focus();
       textRefs.current[index + 1].setSelectionRange(0, 0);
-    });
+    }, 1);
   });
 
   // Create a separate object, transcriptLines, with additional time information so that I can create the actual lines under the waveform.
@@ -186,7 +186,9 @@ export function TextEditor({
         setCurrentShownTranscription(0);
       });
     }
-  }, [storageEngine, studyId, trrackId, config.tasksToNotRecordAudio, participant, trialFilter, setTranscriptList, setCurrentShownTranscription, transcriptList.length]);
+    //  WARNING WARNING ADDING TRANSCRIPT.LENGTH BAD BECAUSE I AM A BAD CODER
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storageEngine, studyId, trrackId, config.tasksToNotRecordAudio, participant, trialFilter, setTranscriptList, setCurrentShownTranscription]);
 
   // Update the current transcription based on the playTime.
   // TODO:: this is super unperformant, but I don't have a solution atm. think about it harder
@@ -239,33 +241,38 @@ export function TextEditor({
     setTags(tagsCopy);
   }, [setTags, setTranscriptList, tags, transcriptList]);
 
+  const addTextRefCallback = useCallback((i: number, ref: HTMLTextAreaElement) => {
+    textRefs.current[i] = ref;
+  }, []);
+
+  const transcript = useMemo(() => (tags ? transcriptList.map((line, i) => (
+    <IconComponent
+      annotation={line.annotation}
+      setAnnotation={setAnnotationCallback}
+      addRef={addTextRefCallback}
+      onSelectTags={addTagCallback}
+      addRowCallback={addRowCallback}
+      deleteRowCallback={deleteRowCallback}
+      onTextChange={textChangeCallback}
+      tags={tags}
+      selectedTags={line.selectedTags}
+      text={line.text}
+      key={i}
+      index={i}
+      start={line.transcriptMappingStart}
+      end={line.transcriptMappingEnd}
+      current={currentShownTranscription === null ? 0 : currentShownTranscription}
+    />
+  )) : <Loader />), [addRowCallback, addTagCallback, addTextRefCallback, currentShownTranscription, deleteRowCallback, setAnnotationCallback, tags, textChangeCallback, transcriptList]);
+
   return (
     <Stack gap={0}>
       <Group mb="sm" justify="space-between" wrap="nowrap">
         <Text style={{ flexGrow: 1, textAlign: 'center' }}>Transcript</Text>
-
         <TagEditor createTagCallback={(t: Tag) => { setTags([...(tags || []), t]); }} editTagCallback={editTagCallback} tags={tags || []} email={auth.user.user?.email || ''} />
-
       </Group>
       <Stack gap={5}>
-        {tags ? transcriptList.map((line, i) => (
-          <IconComponent
-            annotation={line.annotation}
-            setAnnotation={(val) => setAnnotationCallback(i, val)}
-            addRef={(ref) => { textRefs.current[i] = ref; }}
-            onSelectTags={(newTags: Tag[]) => addTagCallback(i, newTags)}
-            addRowCallback={(textIndex) => addRowCallback(i, textIndex)}
-            deleteRowCallback={() => deleteRowCallback(i)}
-            onTextChange={((val) => textChangeCallback(i, val))}
-            tags={tags}
-            selectedTags={line.selectedTags}
-            text={line.text}
-            key={i}
-            start={line.transcriptMappingStart}
-            end={line.transcriptMappingEnd}
-            current={currentShownTranscription === null ? 0 : currentShownTranscription}
-          />
-        )) : <Loader />}
+        {transcript}
       </Stack>
     </Stack>
   );
