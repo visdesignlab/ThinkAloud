@@ -14,9 +14,10 @@
             "University of Toronto"
         ]
     },
+    "recordStudyAudio": false,
     "tasksToNotRecordAudio": ["introduction", "consent", "post-study-survey", "end"],
     "uiConfig": {
-        "contactEmail": "cnobre@cs.toronto.edu",
+    "contactEmail": "cnobre@cs.toronto.edu",
         "helpTextPath": "ThinkAloud/titanicTutorial.md",
         "logoPath": "revisitAssets/revisitLogoSquare.svg",
         "withProgressBar": true,
