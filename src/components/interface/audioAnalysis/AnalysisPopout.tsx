@@ -20,6 +20,8 @@ import {
   IconPlayerPlayFilled,
 } from '@tabler/icons-react';
 import debounce from 'lodash.debounce';
+import throttle from 'lodash.throttle';
+
 import { useAsync } from '../../../store/hooks/useAsync';
 import { StorageEngine } from '../../../storage/engines/StorageEngine';
 import { AllTasksTimeline } from './AllTasksTimeline';
@@ -151,7 +153,7 @@ export function AnalysisPopout({ mini } : {mini: boolean}) {
   const storeDispatch = useStoreDispatch();
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [playTime, setPlayTime] = useThrottledState<number>(0, 50);
+  const [playTime, setPlayTime] = useThrottledState<number>(0, 200);
 
   const waveSurferDiv = useRef(null);
 
@@ -266,6 +268,8 @@ export function AnalysisPopout({ mini } : {mini: boolean}) {
     }
   }, [setSelectedTask, trialFilter]);
 
+  const throttledTimeDispatch = useMemo(() => throttle((t: number) => storeDispatch(setAnalysisWaveformTime(t)), 200), [setAnalysisWaveformTime, storeDispatch]);
+
   const timeUpdate = useEvent((t: number, dispatch = true) => {
     // check if were on the next task. If so, navigate to the next task
     if (participant && trialFilter && trialFilterAnswersName && (participant.answers[trialFilterAnswersName].endTime - participant.answers.audioTest_2.startTime) / 1000 < t) {
@@ -281,7 +285,7 @@ export function AnalysisPopout({ mini } : {mini: boolean}) {
     }
 
     if (dispatch) {
-      storeDispatch(setAnalysisWaveformTime(t));
+      throttledTimeDispatch(t);
     }
   });
 
