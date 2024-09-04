@@ -79,8 +79,8 @@
     "uuid": "^10.0.0",
     "vega": "^5.28.0",
     "vega-lite": "^5.17.0",
-    "wavesurfer-react": "2.2.3",
-    "wavesurfer.js": "7.4.2"
+    "wavesurfer-react": "^2.2.3",
+    "wavesurfer.js": "^7.4.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.0",

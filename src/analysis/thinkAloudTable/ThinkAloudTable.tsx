@@ -12,6 +12,7 @@ import {
   Loader,
   MenuItem,
   ScrollArea,
+  Button,
 } from '@mantine/core';
 import React, {
   useCallback, useEffect, useMemo, useState,
@@ -450,6 +451,7 @@ export function ThinkAloudTable({
         <Group>
           <Title order={5}>Select Task</Title>
           <Select clearable value={currentTask} onChange={setCurrentTask} data={uniqueTrials} />
+          <Button>Download all</Button>
         </Group>
 
         <Group>

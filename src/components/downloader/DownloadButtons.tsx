@@ -20,7 +20,7 @@ export function DownloadButtons({ allParticipants, studyId }: { allParticipants:
               variant="light"
               disabled={allParticipants.length === 0}
               onClick={() => {
-                download(JSON.stringify(allParticipants, null, 2), `${studyId}_all.json`);
+                download(JSON.stringify(allParticipants), `${studyId}_all.json`);
               }}
               onMouseEnter={openJson}
               onMouseLeave={closeJson}

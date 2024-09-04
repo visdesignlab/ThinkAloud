@@ -79,7 +79,7 @@ export default function AppHeader({ studyNavigatorEnabled, dataCollectionEnabled
             <Space w="md" />
             <Title order={4}>{studyConfig?.studyMetadata.title}</Title>
             {isRecording ? (
-              <Group gap={20} wrap="nowrap">
+              <Group ml="xl" gap={20} wrap="nowrap">
                 <Text color="red">Recording audio</Text>
                 <RecordingAudioWaveform />
               </Group>
