@@ -82,15 +82,6 @@ function ConfigSwitcher({
                     </>
                   )}
 
-                {config.warnings.length > 0 && (
-                <>
-                  <Flex align="center" direction="row">
-                    <IconAlertTriangle color="orange" />
-                    <Text fw="bold" ml={8} color="orange">Warnings</Text>
-                  </Flex>
-                  <ErrorLoadingConfig issues={config.warnings} type="warning" />
-                </>
-                )}
               </Card>
             </UnstyledButton>
           );
